@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Bible";
+}
+
+@section scripts{
+    <script src="~/Scripts/Bible.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations)
+    @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
+    @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters)
+    <input type="submit" value="Display" onclick="selectChapter()" />
+    <input type="submit" value="As New Page" onclick="submitChapter()" />
+    <input type="submit" value="Create Script" onclick="insertChapterScript()" />
+    <br />
+    <div id="Content"></div>
+</article>
+

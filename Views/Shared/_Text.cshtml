@@ -1,0 +1,13 @@
+﻿@model IQueryable<Bible.Verse>
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+@foreach (var item in Model) {
+        <p>
+            @Html.DisplayFor(modelItem => item.VerseNumber)
+            @Html.DisplayFor(modelItem => item.Text)
+        </p>
+}
