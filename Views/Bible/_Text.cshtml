@@ -9,6 +9,12 @@
     @foreach (var item in Model)
     {
         @Html.DisplayTextFor(modelItem => item.VerseNumber)
+        <text> </text>
         @Html.DisplayTextFor(modelItem => item.Text)
+        <text> </text>
+        if (item.IsParagraphEnd == true)
+        {
+            <br />
+        }
     }
 </p>

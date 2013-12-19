@@ -101,3 +101,5 @@ C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\bin\Struc
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.SeparatedBibleversions.resources
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedChapterstoBookTable.resources
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.RejoinedVerseTables_AddedTranslationId.resources
+C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedParagraphEndField.resources
+C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedSectionHeading.resources

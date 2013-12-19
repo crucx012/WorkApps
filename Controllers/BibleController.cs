@@ -7,7 +7,7 @@ namespace WorkApplications.Controllers
 {
     public class BibleController : Controller
     {
-        private IBibleDataSource _db;
+        private readonly IBibleDataSource _db;
 
         public BibleController(IBibleDataSource db)
         {
@@ -19,11 +19,13 @@ namespace WorkApplications.Controllers
             var db = _db;
             var chapters = new List<SelectListItem>();
 
-            ViewBag.Translations = new SelectList(db.Translations.Select(c => new { c.Id, c.Name }), "Id", "Name");
-            ViewBag.Books = new SelectList(db.Books.Select(c => new { c.Id, c.Name }), "Id", "Name");
+            ViewBag.Translations = new SelectList(db.Translations.Select(c => new { c.Id, c.Name })
+                .OrderBy(c => c.Id), "Id", "Name");
+            ViewBag.Books = new SelectList(db.Books.Select(c => new { c.Id, c.Name })
+                .OrderBy(c=>c.Id), "Id", "Name");
 
             for (int i = 1; i <= 50; i++)
-                chapters.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+                chapters.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString()});
 
             ViewBag.Chapters = new SelectList(chapters, "Text", "Value");
             ViewBag.Message = "The Bible in many translations";
@@ -37,29 +39,45 @@ namespace WorkApplications.Controllers
             var chapters = new List<SelectListItem>();
 
             for (int i = 1; i <= db.Books.Single(c => c.Name == book).Chapters; i++)
-                chapters.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+                chapters.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString()});
 
             return Json(chapters, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult _Text(string translation = "ESV", string book = "Genesis", int chapter = 1)
+        public ActionResult _Text(int translationID = 1, string book = "Genesis", int chapter = 1)
         {
-            ViewBag.Title = translation.ToUpper();
+            ViewBag.Title = _db.Translations.First(t=>t.Id == translationID).Name.ToUpper();
             ViewBag.Message = string.Format("{0}, Chapter {1}", book, chapter);
-    
+
             var db = _db;
 
-            return PartialView(db.Verses.Where(e => e.TranslationId == db.Translations.FirstOrDefault(t => t.Name == translation).Id)
+            return PartialView(db.Verses.Where(e => e.TranslationId == db.Translations.FirstOrDefault(t => t.Id == translationID).Id)
                 .Where(e => e.BookId == db.Books.FirstOrDefault(b => b.Name == book).Id)
-                .Where(e => e.ChapterNumber == chapter));
+                .Where(e => e.ChapterNumber == chapter)
+                .OrderBy(e=>e.Id));
         }
 
-        public ActionResult _TextGen(string translation, string book, int chapter)
+        public ActionResult _Search(string searchtext, int translationID = 1, int page = 1, int perPage = 50)
         {
-            var db = _db;
-            ViewBag.translation = db.Translations.Single(t => t.Name == translation).Id;
-            ViewBag.book = db.Books.Single(b => b.Name == book).Id;
-            ViewBag.chapter = chapter;
+            ViewBag.Message = "Search results for: ";
+            ViewBag.Search = searchtext;
+            ViewBag.Version = "from the:";
+            ViewBag.Translation = _db.Translations.First(t => t.Id == translationID).Name.ToUpper();
+
+            return PartialView(_db.Verses.Where(e => e.Text.Contains(searchtext))
+                .Where(v => v.TranslationId == translationID)
+                .OrderBy(v => v.Id)
+                .Skip((page - 1) * perPage)
+                .Take(perPage));
+        }
+
+        public ActionResult _Paging(string searchtext, int translationID = 1, int page = 1, int perPage = 50)
+        {
+            ViewBag.PageIndex = page;
+            ViewBag.Pages = (_db.Verses.Where(e => e.Text.Contains(searchtext))
+                .Where(v=>v.TranslationId == translationID)
+                .OrderBy(v => v.Id)
+                .Count())/perPage;
 
             return PartialView();
         }

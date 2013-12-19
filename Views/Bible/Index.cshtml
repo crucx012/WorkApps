@@ -15,13 +15,23 @@
 </hgroup>
 
 <article>
-    @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations)
+    @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations, new { onchange ="translationChange" })
     @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
-    @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters)
+    @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters, new { onchange = "selectChapter"})
     <input type="submit" value="Display" onclick="selectChapter()" />
-    <input type="submit" value="As New Page" onclick="submitChapter()" />
-    <input type="submit" value="Create Script" onclick="insertChapterScript()" />
     <br />
+    <div id="TopPaging"></div>
     <div id="Content"></div>
+    <div id="BottomPaging"></div>
 </article>
+
+<aside>
+    <input id="Search" type="text" onkeyup="setPage(1)" />
+    <label>Results per page</label><input id="nudPerPage" type="number" value="50" min="10" max="100" step="10" onchange="setPage(1)" />
+    <input id="hiddenPage" type="hidden" value="1" />
+    <input id="cbBegining" type="checkbox" onclick="searchBible()" /><label>Begins with</label>
+    <input id="cbEnding" type="checkbox" onclick="searchBible()" /><label>Ends with</label>
+    <br />
+    <input id="cbCaseSensitive" type="checkbox" onclick="searchBible()" /><label>Match case</label>
+</aside>
 

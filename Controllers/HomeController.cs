@@ -5,13 +5,6 @@ namespace WorkApplications.Controllers
 {
     public class HomeController : Controller
     {
-        private IBibleDataSource _db;
-
-        public HomeController(IBibleDataSource db)
-        {
-            _db = db;
-        }
-
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";

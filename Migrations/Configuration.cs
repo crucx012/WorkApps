@@ -18,7 +18,10 @@ namespace WorkApplications.Migrations
             context.Translations.AddOrUpdate(
                 p => p.Name,
                 new Translation { Name = "ESV", FullName = "English Standard Version" },
-                new Translation { Name = "NKJV", FullName = "New King James Version" }
+                new Translation { Name = "KJV", FullName = "King James Version" },
+                new Translation { Name = "NIV", FullName = "New International Version" },
+                new Translation { Name = "NKJV", FullName = "New King James Version" },
+                new Translation { Name = "NLT", FullName = "New Living Translation" }
                 );
             context.Books.AddOrUpdate(
                 p => p.Name,

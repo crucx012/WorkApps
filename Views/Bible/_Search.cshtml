@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Bible.Verse>
+
+<hgroup class="title">
+    <h1>@ViewBag.Message</h1>
+    <h2>@ViewBag.Search</h2>
+    <br />
+    <h1>@ViewBag.Version</h1>
+    <h2>@ViewBag.Translation</h2>
+</hgroup>
+@foreach (var item in Model)
+{
+    <p>
+        @*@Html.DisplayTextFor(modelitem => Model.Join())*@
+        @Html.DisplayTextFor(modelitem => item.ChapterNumber):@Html.DisplayTextFor(modelItem => item.VerseNumber)
+        @Html.DisplayTextFor(modelItem => item.Text)
+    </p>
+}
