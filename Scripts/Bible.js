@@ -40,7 +40,7 @@ function chapterChange() {
 
 function selectChapter() {
     getContent().innerHTML = "";
-    $('input#Search')[0].value = "";
+    clearSearching();
 
     $.ajax({
         type: 'GET',
@@ -49,7 +49,6 @@ function selectChapter() {
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
             getContent().html(data);
-            clearPaging();
         }
     });
 };
@@ -64,12 +63,13 @@ function searchBible() {
             success: function (data) {
                 getContent().html(data);
                 wrapText();
+                translations();
                 paging();
             }
         });
     } else {
         getContent().html("");
-        clearPaging();
+        clearSearching();
     };
 }
 
@@ -88,6 +88,18 @@ function wrapText() {
             ttlLength += list[j].length + replacement.length;
         };
     };
+};
+
+function translations() {
+    $.ajax({
+        type: 'GET',
+        url: "/Bible/_Translations?searchtext=" + getText(),
+        dataType: 'html',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            getTranslations().html(data);
+        }
+    });
 };
 
 function getRegEx() {
@@ -116,9 +128,11 @@ function paging() {
     });
 };
 
-function clearPaging() {
+function clearSearching() {
+    $('input#Search')[0].value = "";
     getTopPaging().html("");
     getBottomPaging().html("");
+    getTranslations().html("");
 }
 
 function getTranslation() {
@@ -143,6 +157,15 @@ function getMatches() {
 
 function getText() {
     return $('input#Search')[0].value;
+}
+
+function getTranslations() {
+    return $('#Translations');
+}
+
+function setTranslation(translationIndex) {
+    $('select#TranslationId')[0].selectedIndex = translationIndex;
+    setPage(1);
 }
 
 function getPage() {

@@ -8,6 +8,13 @@
 <p>
     @foreach (var item in Model)
     {
+        if (item.SectionHeading != null)
+        {
+            <h2>
+                @Html.DisplayTextFor(modelItem => item.SectionHeading)
+            </h2>
+            <br />
+        }
         @Html.DisplayTextFor(modelItem => item.VerseNumber)
         <text> </text>
         @Html.DisplayTextFor(modelItem => item.Text)

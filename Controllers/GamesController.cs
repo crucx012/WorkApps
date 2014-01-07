@@ -1,4 +1,4 @@
-﻿using BowlingGame;
+﻿using Bowling;
 using System;
 using System.Web.Mvc;
 

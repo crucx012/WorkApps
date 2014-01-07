@@ -41,10 +41,11 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WorkApps\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.1.0-alpha1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\WorkApps\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.0-alpha1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -324,6 +325,7 @@
     <Content Include="Views\Bible\_Text.cshtml" />
     <Content Include="Views\Bible\_Search.cshtml" />
     <Content Include="Views\Bible\_Paging.cshtml" />
+    <Content Include="Views\Bible\_Translations.cshtml" />
     <None Include="Views\Games\Bowling.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -380,9 +382,9 @@
       <Project>{b7016d7a-ff01-4003-9923-ae78779e2faf}</Project>
       <Name>Bible</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BowlingGame\Game.csproj">
+    <ProjectReference Include="..\Initial Kata\BowlingGame\Bowling.csproj">
       <Project>{dbdbe254-0eae-4ffd-a7f3-986457cb8015}</Project>
-      <Name>Game</Name>
+      <Name>Bowling</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
