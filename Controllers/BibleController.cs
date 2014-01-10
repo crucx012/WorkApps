@@ -73,11 +73,13 @@ namespace WorkApplications.Controllers
 
         public ActionResult _Paging(string searchtext, int translationID = 1, int page = 1, int perPage = 50)
         {
-            ViewBag.PageIndex = page;
-            ViewBag.Pages = _db.Verses.Where(e => e.Text.Contains(searchtext))
+            var matches = _db.Verses.Where(e => e.Text.Contains(searchtext))
                 .Where(v => v.TranslationId == translationID)
                 .OrderBy(v => v.Id)
-                .Count()/perPage;
+                .Count();
+            ViewBag.PageIndex = page;
+            ViewBag.Pages = matches%perPage == 0 
+                ? (matches / perPage) - 1 : matches / perPage;
             ViewBag.IsElipsis1 = (ViewBag.PageIndex - 2) > 2;
             ViewBag.IsElipsis2 = (ViewBag.PageIndex + 2) < ViewBag.Pages;
 

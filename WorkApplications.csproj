@@ -301,6 +301,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\TicTacToe\ajax-loader.gif" />
+    <Content Include="Images\TicTacToe\E.jpg" />
+    <Content Include="Images\TicTacToe\O.jpg" />
+    <Content Include="Images\TicTacToe\X.jpg" />
     <Content Include="Scripts\Bible.js" />
     <Content Include="Scripts\bowling.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -308,9 +312,6 @@
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
-    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -326,6 +327,7 @@
     <Content Include="Views\Bible\_Search.cshtml" />
     <Content Include="Views\Bible\_Paging.cshtml" />
     <Content Include="Views\Bible\_Translations.cshtml" />
+    <Content Include="Views\Games\TicTacToe.cshtml" />
     <None Include="Views\Games\Bowling.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -381,6 +383,10 @@
     <ProjectReference Include="..\Bible\Bible.csproj">
       <Project>{b7016d7a-ff01-4003-9923-ae78779e2faf}</Project>
       <Name>Bible</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Final Kata\TicTacToeLogic\TicTacToeLogic\TicTacToeLogic.csproj">
+      <Project>{8A5A9000-B262-43D4-8985-00855C8FBEEC}</Project>
+      <Name>TicTacToeLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Initial Kata\BowlingGame\Bowling.csproj">
       <Project>{dbdbe254-0eae-4ffd-a7f3-986457cb8015}</Project>
