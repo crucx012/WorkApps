@@ -103,19 +103,11 @@ C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.RejoinedVerseTables_AddedTranslationId.resources
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedParagraphEndField.resources
 C:\Users\wblack\Documents\Visual Studio 2012\Projects\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedSectionHeading.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csprojResolveAssemblyReference.cache
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RemovedChaptersTable.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.SeparatedBibleversions.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedChapterstoBookTable.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RejoinedVerseTables_AddedTranslationId.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedParagraphEndField.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedSectionHeading.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
+C:\Projects\Training\WorkApplications\bin\WorkApplications.dll.config
 C:\Projects\Training\WorkApplications\bin\WorkApplications.dll
 C:\Projects\Training\WorkApplications\bin\WorkApplications.pdb
 C:\Projects\Training\WorkApplications\bin\Antlr3.Runtime.dll
 C:\Projects\Training\WorkApplications\bin\Bible.dll
-C:\Projects\Training\WorkApplications\bin\BowlingGame.dll
 C:\Projects\Training\WorkApplications\bin\DotNetOpenAuth.AspNet.dll
 C:\Projects\Training\WorkApplications\bin\DotNetOpenAuth.Core.dll
 C:\Projects\Training\WorkApplications\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -149,7 +141,6 @@ C:\Projects\Training\WorkApplications\bin\WebGrease.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.Data.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.WebData.dll
 C:\Projects\Training\WorkApplications\bin\Bible.pdb
-C:\Projects\Training\WorkApplications\bin\BowlingGame.pdb
 C:\Projects\Training\WorkApplications\bin\EntityFramework.xml
 C:\Projects\Training\WorkApplications\bin\EntityFramework.SqlServer.xml
 C:\Projects\Training\WorkApplications\bin\Microsoft.Practices.ServiceLocation.pdb
@@ -206,6 +197,15 @@ C:\Projects\Training\WorkApplications\bin\ko\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\bin\ru\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\bin\zh-Hans\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\bin\zh-Hant\System.Spatial.resources.dll
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csprojResolveAssemblyReference.cache
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RemovedChaptersTable.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.SeparatedBibleversions.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedChapterstoBookTable.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RejoinedVerseTables_AddedTranslationId.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedParagraphEndField.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedSectionHeading.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.pdb
-C:\Projects\Training\WorkApplications\bin\WorkApplications.dll.config
+C:\Projects\Training\WorkApplications\bin\BowlingGame.dll
+C:\Projects\Training\WorkApplications\bin\BowlingGame.pdb

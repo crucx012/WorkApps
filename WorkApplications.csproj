@@ -389,7 +389,7 @@
       <Name>TicTacToeLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Initial Kata\BowlingGame\Bowling.csproj">
-      <Project>{dbdbe254-0eae-4ffd-a7f3-986457cb8015}</Project>
+      <Project>{DBDBE254-0EAE-4FFD-A7F3-986457CB8015}</Project>
       <Name>Bowling</Name>
     </ProjectReference>
   </ItemGroup>

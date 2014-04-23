@@ -16,12 +16,11 @@ namespace WorkApplications.Controllers
 
         public ActionResult Index()
         {
-            var db = _db;
             var chapters = new List<SelectListItem>();
 
-            ViewBag.Translations = new SelectList(db.Translations.Select(c => new { c.Id, c.Name })
+            ViewBag.Translations = new SelectList(_db.Translations.Select(c => new { c.Id, c.Name })
                 .OrderBy(c => c.Id), "Id", "Name");
-            ViewBag.Books = new SelectList(db.Books.Select(c => new { c.Id, c.Name })
+            ViewBag.Books = new SelectList(_db.Books.Select(c => new { c.Id, c.Name })
                 .OrderBy(c => c.Id), "Id", "Name");
 
             for (int i = 1; i <= 50; i++)
@@ -35,10 +34,9 @@ namespace WorkApplications.Controllers
 
         public ActionResult Chapters(string book = "Genesis")
         {
-            var db = _db;
             var chapters = new List<SelectListItem>();
 
-            for (int i = 1; i <= db.Books.Single(c => c.Name == book).Chapters; i++)
+            for (int i = 1; i <= _db.Books.Single(c => c.Name == book).Chapters; i++)
                 chapters.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
 
             return Json(chapters, JsonRequestBehavior.AllowGet);
@@ -49,10 +47,8 @@ namespace WorkApplications.Controllers
             ViewBag.Title = _db.Translations.First(t => t.Id == translationID).Name.ToUpper();
             ViewBag.Message = string.Format("{0}, Chapter {1}", book, chapter);
 
-            var db = _db;
-
-            return PartialView(db.Verses.Where(e => e.TranslationId == db.Translations.FirstOrDefault(t => t.Id == translationID).Id)
-                .Where(e => e.BookId == db.Books.FirstOrDefault(b => b.Name == book).Id)
+            return PartialView(_db.Verses.Where(e => e.TranslationId == _db.Translations.FirstOrDefault(t => t.Id == translationID).Id)
+                .Where(e => e.BookId == _db.Books.FirstOrDefault(b => b.Name == book).Id)
                 .Where(e => e.ChapterNumber == chapter)
                 .OrderBy(e => e.Id));
         }
@@ -63,12 +59,14 @@ namespace WorkApplications.Controllers
             ViewBag.Search = searchtext;
             ViewBag.Version = "from the:";
             ViewBag.Translation = _db.Translations.First(t => t.Id == translationID).Name.ToUpper();
-
-            return PartialView(_db.Verses.Where(e => e.Text.Contains(searchtext))
+            ViewBag.Verse = _db.Verses
+                .Where(v => v.Text.Contains(searchtext))
                 .Where(v => v.TranslationId == translationID)
                 .OrderBy(v => v.Id)
-                .Skip((page - 1) * perPage)
-                .Take(perPage));
+                .Skip((page - 1)*perPage)
+                .Take(perPage);
+
+            return PartialView(ViewBag.Verse);
         }
 
         public ActionResult _Paging(string searchtext, int translationID = 1, int page = 1, int perPage = 50)
@@ -77,9 +75,9 @@ namespace WorkApplications.Controllers
                 .Where(v => v.TranslationId == translationID)
                 .OrderBy(v => v.Id)
                 .Count();
+
             ViewBag.PageIndex = page;
-            ViewBag.Pages = matches%perPage == 0 
-                ? (matches / perPage) - 1 : matches / perPage;
+            ViewBag.Pages = matches%perPage == 0 ? (matches / perPage) - 1 : matches / perPage;
             ViewBag.IsElipsis1 = (ViewBag.PageIndex - 2) > 2;
             ViewBag.IsElipsis2 = (ViewBag.PageIndex + 2) < ViewBag.Pages;
 

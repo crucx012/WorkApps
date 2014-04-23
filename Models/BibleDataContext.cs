@@ -24,7 +24,7 @@ namespace WorkApplications.Models
             get { return Books; }
         }
 
-            IQueryable<Verse> IBibleDataSource.Verses
+        IQueryable<Verse> IBibleDataSource.Verses
         {
             get { return Verses; }
         }
