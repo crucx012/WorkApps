@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Bible.Verse>
+﻿@using System.Diagnostics.Eventing.Reader
+@model IEnumerable<WorkApplications.ViewModel.VerseModel>
 
 <hgroup class="title">
     <h1>@ViewBag.Message</h1>
@@ -7,11 +8,15 @@
     <h1>@ViewBag.Version</h1>
     <h2>@ViewBag.Translation</h2>
 </hgroup>
+@*@if (Model.Count() == 0)
+{
+    <p>@Html.DisplayText("No results found.")</p>
+}*@
 @foreach (var item in Model)
 {
     <p>
-        @*@Html.DisplayTextFor(modelitem => Model.Join())*@
-        @Html.DisplayTextFor(modelitem => item.ChapterNumber):@Html.DisplayTextFor(modelItem => item.VerseNumber)
+        <b>@Html.DisplayTextFor(modelitem => item.BookName)
+        @Html.DisplayTextFor(modelitem => item.ChapterNumber):@Html.DisplayTextFor(modelItem => item.VerseNumber)</b>
         @Html.DisplayTextFor(modelItem => item.Text)
     </p>
 }

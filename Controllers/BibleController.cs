@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WorkApplications.ViewModel;
 
 namespace WorkApplications.Controllers
 {
@@ -55,18 +56,29 @@ namespace WorkApplications.Controllers
 
         public ActionResult _Search(string searchtext, int translationID = 1, int page = 1, int perPage = 50)
         {
-            ViewBag.Message = "Search results for: ";
-            ViewBag.Search = searchtext;
-            ViewBag.Version = "from the:";
-            ViewBag.Translation = _db.Translations.First(t => t.Id == translationID).Name.ToUpper();
-            ViewBag.Verse = _db.Verses
+            ViewBag.Message = "Search results for: " + searchtext;
+            ViewBag.Version = "from the:" + _db.Translations.First(t => t.Id == translationID).Name.ToUpper();
+
+            var Verse = _db.Verses
                 .Where(v => v.Text.Contains(searchtext))
                 .Where(v => v.TranslationId == translationID)
                 .OrderBy(v => v.Id)
-                .Skip((page - 1)*perPage)
-                .Take(perPage);
+                .Skip((page - 1) * perPage)
+                .Take(perPage)
+                .ToList();
 
-            return PartialView(ViewBag.Verse);
+            var book = _db.Books.ToList();
+
+            var model = (from v in Verse
+                select new VerseModel
+                {
+                    BookName = book.FirstOrDefault(b => b.Id == v.BookId).Name, 
+                    ChapterNumber = v.ChapterNumber, 
+                    VerseNumber = v.VerseNumber, 
+                    Text = v.Text
+                }).ToList();
+
+            return PartialView(model);
         }
 
         public ActionResult _Paging(string searchtext, int translationID = 1, int page = 1, int perPage = 50)

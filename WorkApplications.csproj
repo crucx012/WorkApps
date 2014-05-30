@@ -235,6 +235,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\VerseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -383,10 +384,6 @@
     <ProjectReference Include="..\Bible\Bible.csproj">
       <Project>{b7016d7a-ff01-4003-9923-ae78779e2faf}</Project>
       <Name>Bible</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Final Kata\TicTacToeLogic\TicTacToeLogic\TicTacToeLogic.csproj">
-      <Project>{8A5A9000-B262-43D4-8985-00855C8FBEEC}</Project>
-      <Name>TicTacToeLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Initial Kata\BowlingGame\Bowling.csproj">
       <Project>{DBDBE254-0EAE-4FFD-A7F3-986457CB8015}</Project>
