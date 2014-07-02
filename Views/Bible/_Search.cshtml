@@ -1,4 +1,5 @@
 ﻿@using System.Diagnostics.Eventing.Reader
+@using System.Net.Mime
 @model IEnumerable<WorkApplications.ViewModel.VerseModel>
 
 <hgroup class="title">
@@ -8,15 +9,16 @@
     <h1>@ViewBag.Version</h1>
     <h2>@ViewBag.Translation</h2>
 </hgroup>
-@*@if (Model.Count() == 0)
+@if (!Model.Any())
 {
-    <p>@Html.DisplayText("No results found.")</p>
-}*@
-@foreach (var item in Model)
+    <p>No results found.</p>
+}
+else
 {
-    <p>
-        <b>@Html.DisplayTextFor(modelitem => item.BookName)
+    foreach (var item in Model)
+    {
+        <p><b>@Html.DisplayTextFor(modelitem => item.BookName)
         @Html.DisplayTextFor(modelitem => item.ChapterNumber):@Html.DisplayTextFor(modelItem => item.VerseNumber)</b>
-        @Html.DisplayTextFor(modelItem => item.Text)
-    </p>
+        @Html.DisplayTextFor(modelItem => item.Text)</p>
+    }
 }
