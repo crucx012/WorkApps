@@ -1,5 +1,6 @@
-﻿using Bowling;
+﻿using Game;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace WorkApplications.Controllers
@@ -22,7 +23,7 @@ namespace WorkApplications.Controllers
 
         public ActionResult Roll(string rolls)
         {
-            var game = new Game();
+            var game = new Bowling();
 
             var rols = rolls.Trim('[', '\"', '\\', ']').Split(',');
 

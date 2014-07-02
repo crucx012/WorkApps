@@ -307,6 +307,9 @@
     <Content Include="Images\TicTacToe\E.jpg" />
     <Content Include="Images\TicTacToe\O.jpg" />
     <Content Include="Images\TicTacToe\X.jpg" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\Bible.js" />
     <Content Include="Scripts\bowling.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -387,9 +390,9 @@
       <Project>{b7016d7a-ff01-4003-9923-ae78779e2faf}</Project>
       <Name>Bible</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Initial Kata\BowlingGame\Bowling.csproj">
-      <Project>{DBDBE254-0EAE-4FFD-A7F3-986457CB8015}</Project>
-      <Name>Bowling</Name>
+    <ProjectReference Include="Game\Game.csproj">
+      <Project>{f8f79cfc-d545-45b5-b757-bfc69548ec91}</Project>
+      <Name>Game</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
