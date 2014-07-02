@@ -200,6 +200,7 @@
     <Compile Include="Controllers\NumbersController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonalData.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
@@ -373,6 +374,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Numbers\Index.cshtml" />
+    <Content Include="Views\PersonalData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
