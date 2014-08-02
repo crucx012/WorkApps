@@ -26,10 +26,10 @@ namespace WorkApplications.Controllers
         {
             var game = new Bowling();
 
-            var rols = rolls.Trim('[', '\"', '\\', ']').Split(',');
+            var intRolls = ToIntArray(rolls, ',');
 
-            foreach (string pins in rols)
-                game.Roll(Convert.ToInt32(pins));
+            foreach (int pins in intRolls)
+                game.Roll(pins);
 
             int[] score = game.ScoreByFrames();
 
