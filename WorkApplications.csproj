@@ -313,6 +313,7 @@
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery.animate-shadow.js" />
     <Content Include="Scripts\Lights.js" />
+    <Content Include="Scripts\TicTacToe.js" />
     <Content Include="Scripts\Bible.js" />
     <Content Include="Scripts\bowling.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
