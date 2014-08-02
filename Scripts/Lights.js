@@ -93,14 +93,17 @@
     };
 
     function renderOn(light) {
-        var color;
-        if ((parseInt($("#nudColors")[0].value) - 1) > 0) {
-            color = getRandomChosenColor();
-        } else {
-            color = getColor(0);
-        };
+        var color = chooseColor();
         light.addClass(color).stop().animate({ boxShadow: "0 0 10px 3px" }, 500);
     };
+
+    function chooseColor() {
+        if ((parseInt($("#nudColors")[0].value) - 1) > 0) {
+            return getRandomChosenColor();
+        } else {
+            return getColor(0);
+        }
+    }
 
     function getBlinkCount() {
         return $("#blink")[0].value;
