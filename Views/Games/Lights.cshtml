@@ -1,0 +1,40 @@
+﻿@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+    <script src="~/Scripts/jquery.animate-shadow.js"></script>
+    <script src="~/Scripts/Lights.js"></script>
+}
+
+@{
+    ViewBag.Title = "Lights";
+}
+
+<h2>Lights</h2>
+<article>
+    @for (int i = 0; i < 10; i++)
+    {
+        <div class="row">
+            @for (int j = 0; j < 10; j++)
+            {
+                <div class="light" id="light_@i@j"></div>
+            }
+        </div>
+    }
+</article>
+<aside>
+    <div>
+        @Html.RadioButton("Generate", "A", true)Randomize
+        @Html.RadioButton("Generate", "M", false)Manual
+    </div>
+    <div>
+        <input id="nudColors" value="1" type="number" min="1" max="4" />
+        @for (int i = 0; i < 4; i++)
+        {
+            @(i == 0 ? 
+            Html.DropDownList("Color_" + i, (IEnumerable<SelectListItem>) ViewBag.Colors) : 
+            Html.DropDownList("Color_" + i, (IEnumerable<SelectListItem>) ViewBag.Colors, new {disabled = "disabled"}))
+        }
+        <input id="blink" value="5" type="number" min="5" max="95" step="5" />
+    </div>
+</aside>
+

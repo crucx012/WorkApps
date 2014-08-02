@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Lights.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BibleController.cs" />
     <Compile Include="Controllers\NumbersController.cs" />
@@ -310,6 +311,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery.animate-shadow.js" />
+    <Content Include="Scripts\Lights.js" />
     <Content Include="Scripts\Bible.js" />
     <Content Include="Scripts\bowling.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -378,6 +381,7 @@
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Numbers\Index.cshtml" />
     <Content Include="Views\PersonalData\Index.cshtml" />
+    <Content Include="Views\Games\Lights.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
