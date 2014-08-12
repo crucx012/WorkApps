@@ -421,64 +421,6 @@ label {
     font-weight: 600;
 }
 
-label.pins {
-    vertical-align: bottom;
-    white-space: nowrap;
-    width: 21px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-left-style: solid;
-    border-top-width: thin;
-    border-right-width: thin;
-    border-left-width: thin;
-    border-top-color: #000000;
-    border-right-color: #000000;
-    border-left-color: #000000;
-}
-
-label.pins2 {
-    border: thin solid #000000;
-    vertical-align: bottom;
-    white-space: nowrap;
-    width: 21px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-label.score {
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-width: thin;
-    border-right-color: #000000;
-    border-bottom-width: thin;
-    border-bottom-color: #000000;
-    border-left-width: thin;
-    border-left-color: #000000;
-    width: 48px;
-    padding: 0;
-    margin: 0;
-}
-
-label.score2 {
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-width: thin;
-    border-right-color: #000000;
-    border-bottom-width: thin;
-    border-bottom-color: #000000;
-    border-left-width: thin;
-    border-left-color: #000000;
-    width: 75px;
-    padding: 0;
-    margin: 0;
-}
-
 label.checkbox {
     display: inline;
 }

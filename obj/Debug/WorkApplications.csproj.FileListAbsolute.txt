@@ -116,6 +116,7 @@ C:\Projects\Training\WorkApplications\bin\DotNetOpenAuth.OpenId.dll
 C:\Projects\Training\WorkApplications\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\Projects\Training\WorkApplications\bin\EntityFramework.dll
 C:\Projects\Training\WorkApplications\bin\EntityFramework.SqlServer.dll
+C:\Projects\Training\WorkApplications\bin\Game.dll
 C:\Projects\Training\WorkApplications\bin\Microsoft.Data.Edm.dll
 C:\Projects\Training\WorkApplications\bin\Microsoft.Data.OData.dll
 C:\Projects\Training\WorkApplications\bin\Microsoft.Practices.ServiceLocation.dll
@@ -141,6 +142,7 @@ C:\Projects\Training\WorkApplications\bin\WebGrease.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.Data.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.WebData.dll
 C:\Projects\Training\WorkApplications\bin\Bible.pdb
+C:\Projects\Training\WorkApplications\bin\Game.pdb
 C:\Projects\Training\WorkApplications\bin\EntityFramework.xml
 C:\Projects\Training\WorkApplications\bin\EntityFramework.SqlServer.xml
 C:\Projects\Training\WorkApplications\bin\Microsoft.Practices.ServiceLocation.pdb
@@ -207,5 +209,3 @@ C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Adde
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.pdb
-C:\Projects\Training\WorkApplications\bin\Game.dll
-C:\Projects\Training\WorkApplications\bin\Game.pdb
