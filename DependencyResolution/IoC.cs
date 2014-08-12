@@ -30,7 +30,7 @@ namespace WorkApplications.DependencyResolution {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-                            x.For<IBibleDataSource>().HttpContextScoped().Use<BibleDataContext>();
+                            x.For<IBibleDataContext>().HttpContextScoped().Use<BibleDataContext>();
                         });
             return ObjectFactory.Container;
         }

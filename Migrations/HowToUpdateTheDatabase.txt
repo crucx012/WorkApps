@@ -1,0 +1,20 @@
+﻿The application runs on Entity Framework 6.0. We are using a code first approach to the database. 
+This allows the application to update the database when it is deployed to a server. To manually 
+update the database run the following command in the package manager console in visual studio.
+Make sure the connection strings in the web config file are pointing to the proper database.
+
+
+
+To update the BIBLE database...
+update-database -ConfigurationTypeName WorkApplications.Migrations.Bible.BibleConfiguration
+
+If you make changes to the model you will have to add a new migration...
+add-migration TheNameOfYourMigraion -ConfigurationTypeName WorkApplications.Migrations.Bible.BibleConfiguration
+
+
+
+To update the USERS database...
+update-database -ConfigurationTypeName WorkApplications.Migrations.Users.UsersConfiguration
+
+If you make changes to the model you will have to add a new migration...
+add-migration TheNameOfYourMigraion -ConfigurationTypeName Migrations.Users.UsersConfiguration

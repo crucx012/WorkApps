@@ -15,6 +15,13 @@
             </h2>
             <br />
         }
+        if (item.Pretext != null)
+        {
+            <h3>
+                @Html.DisplayTextFor(modelItem => item.Pretext)
+            </h3>
+            <br />
+        }
         @Html.DisplayTextFor(modelItem => item.VerseNumber)
         <text> </text>
         @Html.DisplayTextFor(modelItem => item.Text)

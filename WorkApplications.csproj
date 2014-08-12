@@ -210,33 +210,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201311261440590_Added Chapters to Book Table.cs" />
-    <Compile Include="Migrations\201311261440590_Added Chapters to Book Table.Designer.cs">
-      <DependentUpon>201311261440590_Added Chapters to Book Table.cs</DependentUpon>
+    <Compile Include="Migrations\201408120259278_BibleInitialSetup.cs" />
+    <Compile Include="Migrations\201408120259278_BibleInitialSetup.Designer.cs">
+      <DependentUpon>201408120259278_BibleInitialSetup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312022003268_RejoinedVerseTables_AddedTranslationId.cs" />
-    <Compile Include="Migrations\201312022003268_RejoinedVerseTables_AddedTranslationId.Designer.cs">
-      <DependentUpon>201312022003268_RejoinedVerseTables_AddedTranslationId.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312161512197_AddedParagraphEndField.cs" />
-    <Compile Include="Migrations\201312161512197_AddedParagraphEndField.Designer.cs">
-      <DependentUpon>201312161512197_AddedParagraphEndField.cs</DependentUpon>
+    <Compile Include="Migrations\201408121531014_UsersInitialSetup.cs" />
+    <Compile Include="Migrations\201408121531014_UsersInitialSetup.Designer.cs">
+      <DependentUpon>201408121531014_UsersInitialSetup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312172031200_AddedSectionHeading.cs" />
-    <Compile Include="Migrations\201312172031200_AddedSectionHeading.Designer.cs">
-      <DependentUpon>201312172031200_AddedSectionHeading.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Bible\BibleConfiguration.cs" />
+    <Compile Include="Migrations\Users\UsersConfiguration.cs" />
     <Compile Include="Models\BibleDataContext.cs" />
-    <Compile Include="Migrations\201311242319471_RemovedChaptersTable.cs" />
-    <Compile Include="Migrations\201311242319471_RemovedChaptersTable.Designer.cs">
-      <DependentUpon>201311242319471_RemovedChaptersTable.cs</DependentUpon>
+    <Compile Include="Models\UsersDataContext.cs" />
+      <SubType>
+      </SubType>
     </Compile>
-    <Compile Include="Migrations\201311251622273_Separated Bible versions.cs" />
-    <Compile Include="Migrations\201311251622273_Separated Bible versions.Designer.cs">
-      <DependentUpon>201311251622273_Separated Bible versions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VerseModel.cs" />
   </ItemGroup>
@@ -309,6 +298,7 @@
     <Content Include="Images\TicTacToe\E.jpg" />
     <Content Include="Images\TicTacToe\O.jpg" />
     <Content Include="Images\TicTacToe\X.jpg" />
+    <Content Include="Migrations\HowToUpdateTheDatabase.txt" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
@@ -393,7 +383,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bible\Bible.csproj">
-      <Project>{b7016d7a-ff01-4003-9923-ae78779e2faf}</Project>
+      <Project>{B7016D7A-FF01-4003-9923-AE78779E2FAF}</Project>
       <Name>Bible</Name>
     </ProjectReference>
     <ProjectReference Include="Game\Game.csproj">
@@ -402,23 +392,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201311242319471_RemovedChaptersTable.resx">
-      <DependentUpon>201311242319471_RemovedChaptersTable.cs</DependentUpon>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201408120259278_BibleInitialSetup.resx">
+      <DependentUpon>201408120259278_BibleInitialSetup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311251622273_Separated Bible versions.resx">
-      <DependentUpon>201311251622273_Separated Bible versions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311261440590_Added Chapters to Book Table.resx">
-      <DependentUpon>201311261440590_Added Chapters to Book Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312022003268_RejoinedVerseTables_AddedTranslationId.resx">
-      <DependentUpon>201312022003268_RejoinedVerseTables_AddedTranslationId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312161512197_AddedParagraphEndField.resx">
-      <DependentUpon>201312161512197_AddedParagraphEndField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312172031200_AddedSectionHeading.resx">
-      <DependentUpon>201312172031200_AddedSectionHeading.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201408121531014_UsersInitialSetup.resx">
+      <DependentUpon>201408121531014_UsersInitialSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

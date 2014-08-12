@@ -1,23 +1,24 @@
 using Bible;
-using WorkApplications.Models;
 
-namespace WorkApplications.Migrations
+namespace WorkApplications.Migrations.Bible
 {
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BibleDataContext>
+    internal sealed class BibleConfiguration : DbMigrationsConfiguration<WorkApplications.Models.BibleDataContext>
     {
-        public Configuration()
+        public BibleConfiguration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(BibleDataContext context)
+        protected override void Seed(WorkApplications.Models.BibleDataContext context)
         {
             context.Translations.AddOrUpdate(
                 p => p.Name,
-                new Translation { Name = "ASV", FullName = "American Standard Version"},
+                new Translation { Name = "ASV", FullName = "American Standard Version" },
                 new Translation { Name = "ESV", FullName = "English Standard Version" },
                 new Translation { Name = "KJV", FullName = "King James Version" },
                 new Translation { Name = "NASB", FullName = "New American Standard Bible" },

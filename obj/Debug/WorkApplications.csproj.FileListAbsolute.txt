@@ -200,12 +200,8 @@ C:\Projects\Training\WorkApplications\bin\ru\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\bin\zh-Hans\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\bin\zh-Hant\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csprojResolveAssemblyReference.cache
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RemovedChaptersTable.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.SeparatedBibleversions.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedChapterstoBookTable.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.RejoinedVerseTables_AddedTranslationId.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedParagraphEndField.resources
-C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.AddedSectionHeading.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Bible.BibleInitialSetup.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Users.UsersInitialSetup.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.pdb
