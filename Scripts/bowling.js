@@ -5,9 +5,9 @@
 }
 
 function getFrame() {
-    var previous = document.getElementById("rolls").children;
-    var scores = document.getElementById("score").children;
-    var pins = document.getElementById("nudPins");
+    var previous = $("div.rolls").children();
+    var scores = $("div.scores").children();
+    var pins = $("input#nudPins")[0];
     var rolls = [];
 
     rolls = storedata(previous, pins, rolls);
@@ -18,9 +18,9 @@ function getFrame() {
 function storedata(previous, current, array) {
     if (previous.length > array.length) {
         array = buildarray(previous, array);
-        if (previous[19].innerHTML == ""
-            || previous[18].innerHTML == "X"
-            || previous[19].innerHTML == "/") {
+        if (previous[19].textContent == ""
+            || previous[18].textContent == "X"
+            || previous[19].textContent == "/") {
             array.push(current.value);
         };
     };
@@ -28,13 +28,13 @@ function storedata(previous, current, array) {
 };
 
 function buildarray(previous, array) {
-    for (var i = 0; previous[i].innerHTML != ""; i++) {
-        if (previous[i].innerHTML == "X") {
+    for (var i = 0; previous[i].textContent != ""; i++) {
+        if (previous[i].textContent == "X") {
             array.push("10");
-        } else if (previous[i].innerHTML == "/") {
-            array.push((10 - parseInt(previous[i - 1].innerHTML)) + "");
-        } else if (previous[i].innerHTML != "-") {
-            array.push(previous[i].innerHTML);
+        } else if (previous[i].textContent == "/") {
+            array.push((10 - parseInt(previous[i - 1].textContent)) + "");
+        } else if (previous[i].textContent != "-") {
+            array.push(previous[i].textContent);
         };
     };
     return array;
@@ -45,22 +45,22 @@ function displayrolls(array, previous, current) {
     for (var i = 0; i < Object.keys(array).length; i++) {
         if (previous[i] != null) {
             if (array[i] == 10) {
-                previous[i + s].innerHTML = "X";
+                previous[i + s].textContent = "X";
                 setmax(current, 10);
                 if ((i + s) < 18) {
-                    previous[i + s + 1].innerHTML = "-";
+                    previous[i + s + 1].textContent = "-";
                     s++;
                 }
             } else if ((parseInt(array[i]) + parseInt(array[i + 1])) == 10) {
-                previous[i + s].innerHTML = array[i];
-                previous[i + s + 1].innerHTML = "/";
+                previous[i + s].textContent = array[i];
+                previous[i + s + 1].textContent = "/";
                 setmax(current, 10);
                 i++;
             } else {
-                previous[i + s].innerHTML = array[i];
+                previous[i + s].textContent = array[i];
                 setmax(current, 10 - parseInt(array[i]));
                 if (array[i + 1] != null) {
-                    previous[i + s + 1].innerHTML = array[i + 1];
+                    previous[i + s + 1].textContent = array[i + 1];
                     setmax(current, 10);
                     i++;
                 };
@@ -75,7 +75,6 @@ function setmax(current, max) {
 };
 
 function getscores(array, previous, scores) {
-    var s = 0;
     var httpRequest = $.ajax({
         url: "/Games/Roll?rolls=" + array,
         type: "POST",
@@ -85,20 +84,20 @@ function getscores(array, previous, scores) {
             for (var i = 0; i < Object.keys(json).length; i++) {
                 if (scores[i] != null) {
                     if (json[i] == 0) {
-                        if (previous[i * 2].innerHTML == "0"
-                            && previous[i * 2 + 1].innerHTML == ""
-                            || previous[i * 2 + 1].innerHTML == "0") {
-                            scores[i].innerHTML = json[i];
+                        if (previous[i * 2].textContent == "0"
+                            && previous[i * 2 + 1].textContent == ""
+                            || previous[i * 2 + 1].textContent == "0") {
+                            scores[i].textContent = json[i];
                         } else {
-                            scores[i].innerHTML = "";
+                            scores[i].textContent = "";
                         }
                     } else {
-                        scores[i].innerHTML = json[i];
+                        scores[i].textContent = json[i];
                     };
                 }
             };
             httpRequest.fail(function (jqXhr, textStatus) {
-                document.getElementById("lblMessage").innerHTML = "Request failed: " + textStatus;
+                document.getElementById("lblMessage").textContent = "Request failed: " + textStatus;
             });
         }
     });

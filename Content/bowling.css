@@ -1,4 +1,9 @@
-﻿label.pins {
+﻿div.rolls {
+    display: flex;
+}
+
+div.pins {
+    display: inline-block;
     vertical-align: bottom;
     white-space: nowrap;
     width: 21px;
@@ -6,7 +11,6 @@
     padding: 0;
     margin: 0;
     text-align: center;
-    display: inline-block;
     border-top-style: solid;
     border-left-style: solid;
     border-top-width: thin;
@@ -16,8 +20,8 @@
     border-left-color: #000000;
 }
 
-label.pins2 {
-    border: thin solid #000000;
+div.pins2 {
+    display: inline-block;
     vertical-align: bottom;
     white-space: nowrap;
     width: 21px;
@@ -25,10 +29,49 @@ label.pins2 {
     padding: 0;
     margin: 0;
     text-align: center;
-    display: inline-block;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-width: thin;
+    border-left-width: thin;
+    border-bottom-width: thin;
+    border-top-color: #000000;
+    border-left-color: #000000;
+    border-bottom-color: #000000;
 }
 
-label.score {
+div.pins3 {
+    display: inline-block;
+    border: solid thin #000000;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 21px;
+    height: 21px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+div.scores {
+    display: inline-flex;
+}
+
+div.score {
+    display: inline-block;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    width: 43px;
+    height: 21px;
+    padding: 0;
+    margin: 0;
+}
+
+div.score2 {
+    display: inline-block;
     border-right-style: solid;
     border-bottom-style: solid;
     border-left-style: solid;
@@ -38,26 +81,8 @@ label.score {
     border-bottom-color: #000000;
     border-left-width: thin;
     border-left-color: #000000;
-    width: 47px;
+    width: 65px;
     height: 21px;
     padding: 0;
     margin: 0;
-    display: inline-block;
-}
-
-label.score2 {
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-width: thin;
-    border-right-color: #000000;
-    border-bottom-width: thin;
-    border-bottom-color: #000000;
-    border-left-width: thin;
-    border-left-color: #000000;
-    width: 74px;
-    height: 21px;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
 }

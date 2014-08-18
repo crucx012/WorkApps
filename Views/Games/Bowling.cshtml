@@ -8,7 +8,7 @@
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
     <h2>@ViewBag.Message</h2>
 </hgroup>
 
@@ -17,20 +17,19 @@
     <button onclick="getFrame(); return false;">submit</button>
     <label id="lblMessage"></label>
     <br />
-    <span id="rolls">
-        @for (int index = 0; index < 20; index+=2)
+    <div class="rolls">
+        @for (int index = 0; index < 20; index += 2)
         {
-            <label id="lblRoll@(index)" class="pins"></label>
-            <label id="lblRoll@(index+1)" class="pins2"></label>
+            <div id="lblRoll@(index)" class="pins"></div>
+            <div id="lblRoll@(index+1)" class="pins2"></div>
         }
-        <label id="lblRoll20" class="pins2"></label>
-    </span>
-    <br />
-    <span id="score">
+        <div id="lblRoll20" class="pins3"></div>
+    </div>
+    <div class="scores">
         @for (int index = 0; index < 9; index++)
         {
-            <label id="lblFrame@(index)" class="score"></label>
+            <div id="lblFrame@(index)" class="score"></div>
         }
-        <label id="lblFrame9" class="score2"></label>
-    </span>
+        <div id="lblFrame9" class="score2"></div>
+    </div>
 </article>
