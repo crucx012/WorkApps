@@ -1,45 +1,74 @@
-﻿function startGame() {
+﻿var busy = false;
+
+function startGame() {
     var playerMarker = getPlayerMarker();
     setMarkers(playerMarker);
     $.ajax({
         type: "POST",
-        url: "/Games/ChooseStartingPlayer?playerPiece=" + playerMarker,
+        url: "/Games/ChooseStartingPlayer",
+        data: JSON.stringify({playerPiece:playerMarker}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (json) {
-            $("span#players")[0].hidden = true;
-            $("label#secondPlayerStart")[0].innerText = json;
-            if (json) {
-                $("div#Message")[0].innerText = "Second players turn";
-                AI();
-            } else {
-                $("div#Message")[0].innerText = "First players turn";
-            };
+            begin(json);
         }
     });
 };
 
+function begin(json) {
+    $("span#players")[0].hidden = true;
+    $("label#secondPlayerStart")[0].innerText = json;
+    if (json) {
+        busy = true;
+        $("div#Message")[0].innerText = "Second players turn";
+        AI();
+    } else {
+        $("div#Message")[0].innerText = "First players turn";
+    }
+}
+
 function takeTurn(cell) {
-    populateCell(cell, getPlayerMarker());
-    populateBoard(cell);
-    AI();
+    if (isReady(cell)) {
+        busy = true;
+        populateCell(cell, getPlayerMarker());
+        populateBoard(cell);
+        AI();
+    }
 };
+
+function isReady(cell) {
+    return (playerPieceChosen() && !busy && cellIsUnclaimed(cell));
+}
+
+function playerPieceChosen() {
+    return $('span#players')[0].hidden == true;
+}
+
+function cellIsUnclaimed(cell) {
+    return $('img#square_' + cell)[0].src.indexOf('E.jpg') > -1;
+}
 
 function AI() {
     loadingBar();
     $.ajax({
         type: "POST",
-        url: "/Games/ClaimCell?playerPiece=" + getPlayerMarker()
-            + "&isSecondPlayerFirst=" + secondGoesFirst()
-            + "&board=" + getBoard()
-            + "&claimedSquare=" + 1,
+        url: "/Games/ClaimCell",
+        data: JSON.stringify({
+            playerPiece: getPlayerMarker(),
+            isSecondPlayerFirst: secondGoesFirst(),
+            board: getBoard(),
+            claimedSquare: 1
+        }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (json) {
             var cell = json.pop();
             populateCell(cell, getPCMarker());
             populateBoard(cell);
+        },
+        complete: function() {
             closeLoadingBar();
+            busy = false;
         }
     });
 }

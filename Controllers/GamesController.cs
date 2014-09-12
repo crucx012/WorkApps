@@ -73,44 +73,30 @@ namespace WorkApplications.Controllers
             return Json(game.SecondPlayerStart(), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ClaimCell(Piece playerPiece, Boolean isSecondPlayerFirst, string board, int claimedSquare)
+        public ActionResult ClaimCell(Piece playerPiece, Boolean isSecondPlayerFirst, int[] board, int claimedSquare)
         {
             var game = new TicTacToe(3, playerPiece, 1);
-            var newBoard = ToIntArray(board, ',');
 
-            if (isSecondPlayerFirst) game.Turn++;
+            if (isSecondPlayerFirst) 
+                game.Turn++;
 
-            if (newBoard[0] != 0) game.ManuallyPopulateCells(newBoard);
+            if (board != null && board[0] != 0) 
+                game.ManuallyPopulateCells(board);
+
             game.TakeTurn(claimedSquare);
 
-            var returnBoard = newBoard.ToList();
+            return Json(GetReturnBoard(board,game), JsonRequestBehavior.AllowGet);
+        }
+
+        private static List<int> GetReturnBoard(int[] board, TicTacToe game)
+        {
+            var returnBoard = new List<int>();
 
             for (int i = 1; i <= 9; i++)
-                if (returnBoard.All(v => v != i)
-                    && game.GetCellValue(i) != Piece.E)
+                if ((board == null || board.All(v => v != i)) && game.GetCellValue(i) != Piece.E)
                     returnBoard.Add(i);
 
-            return Json(returnBoard, JsonRequestBehavior.AllowGet);
-        }
-
-        private int[] ToIntArray(string value, char sep)
-        {
-            string[] sa = value.Split(sep);
-            var ia = new int[sa.Length];
-
-            for (int i = 0; i < ia.Length; ++i)
-                PopulateIntArray(sa, i, ia);
-
-            return ia;
-        }
-
-        private static void PopulateIntArray(string[] sa, int i, int[] ia)
-        {
-            int j;
-            string s = sa[i];
-
-            if (int.TryParse(s, out j))
-                ia[i] = j;
+            return returnBoard;
         }
     }
 }
