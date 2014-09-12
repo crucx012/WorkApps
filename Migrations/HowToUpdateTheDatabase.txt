@@ -13,6 +13,14 @@ add-migration TheNameOfYourMigraion -ConfigurationTypeName WorkApplications.Migr
 
 
 
+To update the WBLACK database...
+update-database -ConfigurationTypeName WorkApplications.Migrations.Wblack.WblackConfiguration
+
+If you make changes to the model you will have to add a new migration...
+add-migration TheNameOfYourMigraion -ConfigurationTypeName WorkApplications.Migrations.Wblack.WblackConfiguration
+
+
+
 To update the USERS database...
 update-database -ConfigurationTypeName WorkApplications.Migrations.Users.UsersConfiguration
 

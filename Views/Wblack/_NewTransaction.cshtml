@@ -1,0 +1,46 @@
+﻿<div id="newTrans" class="fullpage">
+    <div class="flexBox">
+        <div class="centered">
+            <label>Account</label>
+            <div>
+                @Html.DropDownList("NewAccountId", (IEnumerable<SelectListItem>)ViewBag.Accounts)
+            </div>
+            <label>Entity</label>
+            <div>
+                @Html.DropDownList("NewEntityId", (IEnumerable<SelectListItem>)ViewBag.Entities)
+            </div>
+            <label>Category</label>
+            <div>
+                @Html.DropDownList("NewCategoryId", (IEnumerable<SelectListItem>)ViewBag.Categories)
+            </div>
+            <label>Tender Type</label>
+            <div>
+                @Html.DropDownList("NewTenderId", (IEnumerable<SelectListItem>)ViewBag.Tenders)
+            </div>
+            <label>Date</label>
+            <div>
+                <input id="Date" name="todays_date" onfocus="showCalendarControl(this);" type="text">
+            </div>
+            <label>Amount</label>
+            <div>
+                <input id="Amount" value="0" type="number" />
+            </div>
+            <label>Cash Back</label>
+            <div>
+                <input id="CashBack" value="0" type="number" />
+            </div>
+            <label>Description</label>
+            <div>
+                <input id="Desc" type="text" />
+            </div>
+            <label>Transfer Account</label>
+            <div>
+                @Html.DropDownList("NewTransAcc", (IEnumerable<SelectListItem>)ViewBag.TransAccs)
+            </div>
+            <div>
+                <button onclick="insertTransaction(); return false;">Insert New Transaction</button>
+                <button onclick="removeInsertForm(); return false;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

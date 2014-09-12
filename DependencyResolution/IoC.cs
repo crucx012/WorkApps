@@ -19,6 +19,7 @@
 using Bible;
 using StructureMap;
 using WorkApplications.Models;
+using Wblack;
 
 namespace WorkApplications.DependencyResolution {
     public static class IoC {
@@ -31,6 +32,7 @@ namespace WorkApplications.DependencyResolution {
                                         scan.WithDefaultConventions();
                                     });
                             x.For<IBibleDataContext>().HttpContextScoped().Use<BibleDataContext>();
+                            x.For<IWblackDataContext>().HttpContextScoped().Use<WblackDataContext>();
                         });
             return ObjectFactory.Container;
         }

@@ -195,6 +195,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\CalendarControl.css" />
+    <Content Include="Content\Wblack.css" />
     <Content Include="Content\Bowling.css" />
     <Content Include="Content\Lights.css" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -202,7 +204,7 @@
     <Compile Include="Controllers\NumbersController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PersonalData.cs" />
+    <Compile Include="Controllers\WblackController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
@@ -214,15 +216,21 @@
     <Compile Include="Migrations\201408120259278_BibleInitialSetup.Designer.cs">
       <DependentUpon>201408120259278_BibleInitialSetup.cs</DependentUpon>
     </Compile>
-    </Compile>
     <Compile Include="Migrations\201408121531014_UsersInitialSetup.cs" />
     <Compile Include="Migrations\201408121531014_UsersInitialSetup.Designer.cs">
       <DependentUpon>201408121531014_UsersInitialSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408121952146_WblackInitialSetup.cs" />
+    <Compile Include="Migrations\201408121952146_WblackInitialSetup.designer.cs">
+      <DependentUpon>201408121952146_WblackInitialSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Bible\BibleConfiguration.cs" />
+    <Compile Include="Migrations\Wblack\WblackConfiguration.cs" />
     <Compile Include="Migrations\Users\UsersConfiguration.cs" />
     <Compile Include="Models\BibleDataContext.cs" />
+    <Compile Include="Models\DbInteractor.cs" />
     <Compile Include="Models\UsersDataContext.cs" />
+    <Compile Include="Models\WblackDataContext.cs">
       <SubType>
       </SubType>
     </Compile>
@@ -299,6 +307,8 @@
     <Content Include="Images\TicTacToe\O.jpg" />
     <Content Include="Images\TicTacToe\X.jpg" />
     <Content Include="Migrations\HowToUpdateTheDatabase.txt" />
+    <Content Include="Scripts\CalendarControl.js" />
+    <Content Include="Scripts\Wblack.js" />
     <Content Include="Scripts\JQuery\jquery-1.10.2.js" />
     <Content Include="Scripts\JQuery\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\JQuery\jquery-ui-1.10.4.min.js" />
@@ -372,8 +382,14 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Numbers\Index.cshtml" />
-    <Content Include="Views\PersonalData\Index.cshtml" />
+    <Content Include="Views\Wblack\Index.cshtml" />
     <Content Include="Views\Games\Lights.cshtml" />
+    <Content Include="Views\Wblack\BankAccounts.cshtml" />
+    <Content Include="Views\Wblack\GasReceipts.cshtml" />
+    <Content Include="Views\Wblack\Sleep.cshtml" />
+    <Content Include="Views\Wblack\_Transactions.cshtml" />
+    <Content Include="Views\Wblack\_TransactionsDescending.cshtml" />
+    <Content Include="Views\Wblack\_NewTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -385,6 +401,10 @@
     <ProjectReference Include="..\Bible\Bible.csproj">
       <Project>{B7016D7A-FF01-4003-9923-AE78779E2FAF}</Project>
       <Name>Bible</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wblack\Wblack.csproj">
+      <Project>{AAC4B9A8-95FB-4114-9803-4C3E3A11B79D}</Project>
+      <Name>Wblack</Name>
     </ProjectReference>
     <ProjectReference Include="Game\Game.csproj">
       <Project>{f8f79cfc-d545-45b5-b757-bfc69548ec91}</Project>
@@ -398,9 +418,11 @@
     <EmbeddedResource Include="Migrations\201408120259278_BibleInitialSetup.resx">
       <DependentUpon>201408120259278_BibleInitialSetup.cs</DependentUpon>
     </EmbeddedResource>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408121531014_UsersInitialSetup.resx">
       <DependentUpon>201408121531014_UsersInitialSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408121952146_WblackInitialSetup.resx">
+      <DependentUpon>201408121952146_WblackInitialSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -137,11 +137,13 @@ C:\Projects\Training\WorkApplications\bin\System.Web.Razor.dll
 C:\Projects\Training\WorkApplications\bin\System.Web.WebPages.Deployment.dll
 C:\Projects\Training\WorkApplications\bin\System.Web.WebPages.dll
 C:\Projects\Training\WorkApplications\bin\System.Web.WebPages.Razor.dll
+C:\Projects\Training\WorkApplications\bin\Wblack.dll
 C:\Projects\Training\WorkApplications\bin\WebActivator.dll
 C:\Projects\Training\WorkApplications\bin\WebGrease.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.Data.dll
 C:\Projects\Training\WorkApplications\bin\WebMatrix.WebData.dll
 C:\Projects\Training\WorkApplications\bin\Bible.pdb
+C:\Projects\Training\WorkApplications\bin\Wblack.pdb
 C:\Projects\Training\WorkApplications\bin\Game.pdb
 C:\Projects\Training\WorkApplications\bin\EntityFramework.xml
 C:\Projects\Training\WorkApplications\bin\EntityFramework.SqlServer.xml
@@ -202,6 +204,7 @@ C:\Projects\Training\WorkApplications\bin\zh-Hant\System.Spatial.resources.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csprojResolveAssemblyReference.cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Bible.BibleInitialSetup.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Users.UsersInitialSetup.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Wblack.WblackInitialSetup.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.pdb

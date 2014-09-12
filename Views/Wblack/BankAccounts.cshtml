@@ -1,0 +1,37 @@
+﻿@section scripts{
+    <script src="~/Scripts/Wblack.js"></script>
+    <script src="~/Scripts/JQuery/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/CalendarControl.js" language="javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Wblack.css">
+    <link href="~/Content/CalendarControl.css" rel="stylesheet" type="text/css">
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Entity</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>CashBack</th>
+            <th>Balance</th>
+        </tr>
+    </table>
+</article>
+
+<aside>
+    <h2>Account</h2>
+    @Html.DropDownList("AccountId", (IEnumerable<SelectListItem>)ViewBag.Accounts, new { onchange = "resetPage()" })
+    <div>
+        @Html.RadioButton("Sort", "0", new { onchange = "resetPage()" })Ascending
+        @Html.RadioButton("Sort", "1", new { @checked = "checked", onchange = "resetPage()" })Descending
+    </div>
+    <div>
+        <button onclick="displayNewTransForm(); return false;">Insert New Transaction</button>
+    </div>
+</aside>
