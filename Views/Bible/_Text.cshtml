@@ -22,10 +22,22 @@
             </h3>
             <br />
         }
-        @Html.DisplayTextFor(modelItem => item.VerseNumber)
+        <i>
+            @Html.DisplayTextFor(modelItem => item.VerseNumber)
+        </i>
         <text> </text>
         @Html.DisplayTextFor(modelItem => item.Text)
         <text> </text>
+        if (item.MidVerseHeading != null)
+        {
+            <br/>
+            <h2>
+                @Html.DisplayTextFor(modelItem => item.MidVerseHeading)
+            </h2> 
+            <br/>
+            @Html.DisplayTextFor(modelItem => item.SecondText)
+            <text> </text>
+        }
         if (item.IsParagraphEnd == true)
         {
             <br />

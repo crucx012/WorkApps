@@ -1,6 +1,7 @@
 ﻿$(document).ready(translationChange());
 $(document).ready(bookChange());
 $(document).ready(chapterChange());
+$(document).ready(selectChapter());
 
 function translationChange() {
     $("#TranslationId").change(function () {
@@ -26,6 +27,7 @@ function bookChange() {
                     chapters.append("<option value='" + object.Value + "'>" + object.Text + "</option>");
                 });
                 chapters[0].selected = true;
+                showChapterSelector();
                 selectChapter();
             }
         });
@@ -55,27 +57,58 @@ function selectChapter() {
     });
 };
 
-function searchBible() {
-    if ($('input#Search')[0].value != "") {
-        $.ajax({
-            type: 'GET',
-            url: "/Bible/_Search?searchtext=" + $('input#Search')[0].value
-                + "&translationID=" + $("#TranslationId option:selected")[0].value
-                + "&page=" + $('input#hiddenPage')[0].value
-                + "&perPage=" + $('input#nudPerPage')[0].value,
-            dataType: 'html',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                $('#Content').html(data);
-                wrapText();
-                translations();
-                paging();
-            }
-        });
-    } else {
-        $('#Content').html("");
-        clearSearching();
+function searchBible(wait) {
+    if ($('input#Search')[0].value != "" && $('input#Search')[0].value != ".") {
+        getSearchResults(wait);
+    } else if ($('div#bible-selection')[0].hidden) {
+        clearSearch();
     };
+}
+
+function getSearchResults(wait) {
+    $.ajax({
+        type: 'GET',
+        url: "/Bible/_Search?searchtext=" + $('input#Search')[0].value
+            + "&translationID=" + $("#TranslationId option:selected")[0].value
+            + "&page=" + $('input#hiddenPage')[0].value
+            + "&perPage=" + $('input#nudPerPage')[0].value,
+        dataType: 'html',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            setTimeout(function() {
+                delaySearch($('input#Search')[0].value, data);
+            }, wait);
+        }
+    });
+}
+
+function delaySearch(tempText,data) {
+    if (tempText == $('input#Search')[0].value) {
+        returnSerachResults(data);
+    }
+}
+
+function returnSerachResults(data) {
+    hideChapterSelector();
+    $('#Content').html(data);
+    wrapText();
+    translations();
+    paging();
+}
+
+function clearSearch() {
+    $('#Content').html("");
+    clearSearching();
+    showChapterSelector();
+    selectChapter();
+}
+
+function hideChapterSelector() {
+    $("div#bible-selection")[0].hidden = true;
+}
+
+function showChapterSelector() {
+    $("div#bible-selection")[0].hidden = false;
 }
 
 function wrapText() {
@@ -148,7 +181,7 @@ function setTranslation(translationIndex) {
     setPage(1);
 }
 
-function setPage(page) {
+function setPage(page,wait) {
     $('input#hiddenPage')[0].value = page;
-    searchBible();
+    searchBible(wait);
 }

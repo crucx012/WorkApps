@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201408121952146_WblackInitialSetup.designer.cs">
       <DependentUpon>201408121952146_WblackInitialSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408291945350_TwoPartTextAndExtraHeading.cs" />
+    <Compile Include="Migrations\201408291945350_TwoPartTextAndExtraHeading.Designer.cs">
+      <DependentUpon>201408291945350_TwoPartTextAndExtraHeading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Bible\BibleConfiguration.cs" />
     <Compile Include="Migrations\Wblack\WblackConfiguration.cs" />
     <Compile Include="Migrations\Users\UsersConfiguration.cs" />
@@ -235,7 +239,6 @@
       </SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\VerseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -423,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408121952146_WblackInitialSetup.resx">
       <DependentUpon>201408121952146_WblackInitialSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408291945350_TwoPartTextAndExtraHeading.resx">
+      <DependentUpon>201408291945350_TwoPartTextAndExtraHeading.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

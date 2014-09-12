@@ -205,6 +205,7 @@ C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csprojResolveAs
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Bible.BibleInitialSetup.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Users.UsersInitialSetup.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Wblack.WblackInitialSetup.resources
+C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.Migrations.Bible.TwoPartTextAndExtraHeading.resources
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.csproj.GenerateResource.Cache
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.dll
 C:\Projects\Training\WorkApplications\obj\Debug\WorkApplications.pdb

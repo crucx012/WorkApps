@@ -13,10 +13,11 @@
 </hgroup>
 
 <article>
-    @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations, new { onchange ="translationChange" })
-    @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
-    @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters, new { onchange = "selectChapter"})
-    <input type="submit" value="Display" onclick="selectChapter()" />
+    <div id="bible-selection">
+        @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations, new { onchange = "translationChange" })
+        @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
+        @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters, new { onchange = "selectChapter" })
+    </div>
     <br />
     <div id="TopPaging"></div>
     <div id="Content"></div>
@@ -24,13 +25,16 @@
 </article>
 
 <aside>
-    <input id="Search" type="text" onkeyup="setPage(1)" />
-    <label>Results per page</label><input id="nudPerPage" type="number" value="50" min="10" max="50" step="10" onchange="setPage(1)" />
+    <h2>Search</h2>
+    <input id="Search" type="text" onkeyup="setPage(1,1000)" />
+    <label>Results per page</label><input id="nudPerPage" type="number" value="20" min="10" max="50" step="10" onchange="setPage(1,0)" />
     <input id="hiddenPage" type="hidden" value="1" />
-    <input id="cbBegining" type="checkbox" onclick="searchBible()" /><label>Begins with</label>
-    <input id="cbEnding" type="checkbox" onclick="searchBible()" /><label>Ends with</label>
+    <h3>Highlighting</h3>
     <br />
-    <input id="cbCaseSensitive" type="checkbox" onclick="searchBible()" /><label>Match case</label>
+    <input id="cbBegining" type="checkbox" onclick="searchBible(0)" /><label>Begins with</label>
+    <input id="cbEnding" type="checkbox" onclick="searchBible(0)" /><label>Ends with</label>
+    <br />
+    <input id="cbCaseSensitive" type="checkbox" onclick="searchBible(0)" /><label>Match case</label>
     <div id="Translations"></div>
 </aside>
 
