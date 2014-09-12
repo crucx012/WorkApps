@@ -435,6 +435,18 @@ input, textarea {
     width: 300px;
 }
 
+select {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 312px;
+    height: 31px;
+
+}
+
 textarea {
     font-family: inherit;
     width: 500px;
