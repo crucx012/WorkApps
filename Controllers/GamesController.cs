@@ -22,13 +22,11 @@ namespace WorkApplications.Controllers
             return View();
         }
 
-        public ActionResult Roll(string rolls)
+        public ActionResult Roll(int[] rolls)
         {
             var game = new Bowling();
 
-            var intRolls = ToIntArray(rolls, ',');
-
-            foreach (int pins in intRolls)
+            foreach (int pins in rolls)
                 game.Roll(pins);
 
             int[] score = game.ScoreByFrames();
@@ -43,6 +41,21 @@ namespace WorkApplications.Controllers
             ViewBag.Colors = new SelectList(colors, "Value", "Text");
 
             return View();
+        }
+
+        private static IEnumerable<SelectListItem> Colors()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem {Text = "black", Value = "black"},
+                new SelectListItem {Text = "blue", Value = "blue"},
+                new SelectListItem {Text = "green", Value = "green"},
+                new SelectListItem {Text = "orange", Value = "orange"},
+                new SelectListItem {Text = "purple", Value = "purple"},
+                new SelectListItem {Text = "red", Value = "red"},
+                new SelectListItem {Text = "white", Value = "white"},
+                new SelectListItem {Text = "yellow", Value = "yellow"}
+            };
         }
 
         public ActionResult TicTacToe()
@@ -78,21 +91,6 @@ namespace WorkApplications.Controllers
                     returnBoard.Add(i);
 
             return Json(returnBoard, JsonRequestBehavior.AllowGet);
-        }
-
-        private static IEnumerable<SelectListItem> Colors()
-        {
-            return new List<SelectListItem>
-            {
-                new SelectListItem {Text = "black", Value = "black"},
-                new SelectListItem {Text = "blue", Value = "blue"},
-                new SelectListItem {Text = "green", Value = "green"},
-                new SelectListItem {Text = "orange", Value = "orange"},
-                new SelectListItem {Text = "purple", Value = "purple"},
-                new SelectListItem {Text = "red", Value = "red"},
-                new SelectListItem {Text = "white", Value = "white"},
-                new SelectListItem {Text = "yellow", Value = "yellow"}
-            };
         }
 
         private int[] ToIntArray(string value, char sep)
