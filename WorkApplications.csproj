@@ -391,8 +391,12 @@
     <Content Include="Views\Wblack\GasReceipts.cshtml" />
     <Content Include="Views\Wblack\Sleep.cshtml" />
     <Content Include="Views\Wblack\_Transactions.cshtml" />
-    <Content Include="Views\Wblack\_TransactionsDescending.cshtml" />
+    <Content Include="Views\Wblack\_Transactions_Descending.cshtml" />
     <Content Include="Views\Wblack\_NewTransaction.cshtml" />
+    <Content Include="Views\Wblack\_Transactions_NotPosted.cshtml" />
+    <Content Include="Views\Wblack\_Transactions_Posted.cshtml" />
+    <Content Include="Views\Wblack\_Transactions_PostedDescending.cshtml" />
+    <Content Include="Views\Wblack\_Transactions_NotPostedDescending.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.SqlClient;
 using System.Linq;
 using Wblack;
 

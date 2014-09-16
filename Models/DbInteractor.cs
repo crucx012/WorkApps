@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
-using Wblack;
 
 namespace WorkApplications.Models
 {

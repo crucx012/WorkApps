@@ -12,7 +12,17 @@
 </hgroup>
 
 <article>
-    <table>
+    <table id="postedTable">
+        <tr>
+            <th>Date</th>
+            <th>Entity</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Balance</th>
+        </tr>
+    </table>
+    <table id="allTransTable" style="display: none;">
         <tr>
             <th>Date</th>
             <th>Entity</th>
@@ -22,11 +32,24 @@
             <th>Balance</th>
         </tr>
     </table>
+    <table id="nonPostedTable" style="display: none;">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Entity</th>
+            <th>Amount</th>
+        </tr>
+    </table>
 </article>
 
 <aside>
     <h2>Account</h2>
     @Html.DropDownList("AccountId", (IEnumerable<SelectListItem>)ViewBag.Accounts, new { onchange = "resetPage()" })
+    <div>
+        @Html.RadioButton("Transactions", "0", new { @checked = "checked", onchange = "resetPage()" })Posted
+        @Html.RadioButton("Transactions", "1", new { onchange = "resetPage()" })Not Posted
+        @Html.RadioButton("Transactions", "2", new { onchange = "resetPage()" })All
+    </div>
     <div>
         @Html.RadioButton("Sort", "0", new { onchange = "resetPage()" })Ascending
         @Html.RadioButton("Sort", "1", new { @checked = "checked", onchange = "resetPage()" })Descending

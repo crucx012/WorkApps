@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -41,7 +40,7 @@ namespace WorkApplications.Controllers
             return PartialView(_db.Transactions.Where(t => t.AccountID == accountID).Include(t => t.Entity).OrderBy(t => t.TransactionID).Skip(skip).Take(take));
         }
 
-        public ActionResult _TransactionsDescending(int accountID, int skip, int take)
+        public ActionResult _Transactions_Descending(int accountID, int skip, int take)
         {
             var max = _db.Transactions.Count(t => t.AccountID == accountID);
 
@@ -51,6 +50,40 @@ namespace WorkApplications.Controllers
             ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID).OrderByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.TransactionAmt + t.CashBack);
 
             return PartialView(_db.Transactions.Where(t => t.AccountID == accountID).Include(t => t.Entity).OrderByDescending(t => t.TransactionID).Skip(skip).Take(take));
+        }
+
+        public ActionResult _Transactions_NotPosted(int accountID)
+        {
+            return PartialView(_db.Transactions.Where(t => !t.BankRecorded && t.AccountID == accountID).Include(t => t.Entity).OrderBy(t => t.TransactionID));
+        }
+
+        public ActionResult _Transactions_NotPostedDescending(int accountID)
+        {
+            return PartialView(_db.Transactions.Where(t => !t.BankRecorded && t.AccountID == accountID).Include(t => t.Entity).OrderByDescending(t => t.TransactionID));
+        }
+
+        public ActionResult _Transactions_Posted(int accountID, int skip, int take)
+        {
+            var max = _db.Transactions.Count(t => t.AccountID == accountID && t.BankRecorded);
+
+            if (skip + take >= max + take)
+                return null;
+
+            ViewBag.Balance = skip == 0 ? 0 : _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderBy(t => t.TransactionID).Take(skip).Sum(t => t.TransactionAmt + t.CashBack);
+
+            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderBy(t => t.TransactionID).Skip(skip).Take(take));
+        }
+
+        public ActionResult _Transactions_PostedDescending(int accountID, int skip, int take)
+        {
+            var max = _db.Transactions.Count(t => t.AccountID == accountID && t.BankRecorded);
+
+            if (skip + take >= max + take)
+                return null;
+
+            ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.TransactionAmt + t.CashBack);
+
+            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderByDescending(t => t.TransactionID).Skip(skip).Take(take));
         }
 
         public ActionResult _NewTransaction()

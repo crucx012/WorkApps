@@ -10,18 +10,6 @@ tr:nth-child(even) {
     background-color: white;
 }
 
-.flexBox {
-    position: fixed;
-    z-index: 100;
-    border-radius: 5px;
-    top: 50%;
-    left: 50%;
-    margin: -325px 0 0 -200px;
-    background: #e2e2e2;
-    height: 650px;
-    width: 360px;
-}
-
 .fullpage {
     background: rgba(128, 128, 128, 0.5);
     position: fixed;
@@ -32,9 +20,21 @@ tr:nth-child(even) {
     height: 100%;
 }
 
-.centered {
+.flexBox {
+    position: fixed;
+    z-index: 100;
+    border-radius: 5px;
     top: 50%;
     left: 50%;
-    margin: 20px auto;
-    width: 312px;
+    background: #e2e2e2;
+}
+
+.tall-form {
+    margin: -325px 0 0 -200px;
+    height: 645px;
+    width: 360px;
+}
+
+.tall-form-centered {
+    margin: 15px 24px 15px 24px;
 }

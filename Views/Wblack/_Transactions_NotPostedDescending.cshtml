@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Wblack.Transaction>
+
+@foreach (var item in Model)
+{
+    String transactionDate = item.TransactionDate.ToString("MM/dd/yyyy");
+    Decimal total = item.TransactionAmt + item.CashBack;
+    <tr>
+        <td class="number">@item.TransactionID</td>
+        <td class="number">@transactionDate</td>
+        <td class="text">@item.Entity.Description</td>
+        <td class="number">@total</td>
+    </tr>
+}
