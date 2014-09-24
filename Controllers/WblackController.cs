@@ -101,9 +101,19 @@ namespace WorkApplications.Controllers
             return PartialView();
         }
 
-        public void InsertTransaction(Transaction newTransaction)
+        public int InsertTransaction(Transaction newTransaction)
         {
-            _db.InsertTransaction(newTransaction);
+            return _db.InsertTransaction(newTransaction);
+        }
+
+        public ActionResult _PostTransaction(int transID)
+        {
+            return PartialView(_db.Transactions.SingleOrDefault(t => t.TransactionID == transID));
+        }
+
+        public int PostTransaction(Transaction postTransaction)
+        {
+            return _db.PostTransaction(postTransaction);
         }
 
         public ActionResult GasReceipts()

@@ -2,7 +2,11 @@
 
 @foreach (var item in Model)
 {
-    String transactionDate = item.TransactionDate.ToString("MM/dd/yyyy");
+    String transactionDate = "00/00/0000";
+    if (item.BankRecordedDate != null)
+    {
+        transactionDate = ((DateTime) item.BankRecordedDate).ToString("MM/dd/yyyy");
+    }
     Decimal amount = item.TransactionAmt + item.CashBack;
     <tr>
         <td class="number">@transactionDate</td>

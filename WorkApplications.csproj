@@ -397,6 +397,7 @@
     <Content Include="Views\Wblack\_Transactions_Posted.cshtml" />
     <Content Include="Views\Wblack\_Transactions_PostedDescending.cshtml" />
     <Content Include="Views\Wblack\_Transactions_NotPostedDescending.cshtml" />
+    <Content Include="Views\Wblack\_PostTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

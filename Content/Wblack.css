@@ -30,11 +30,21 @@ tr:nth-child(even) {
 }
 
 .tall-form {
-    margin: -325px 0 0 -200px;
+    margin: -325px 0 0 -180px;
     height: 645px;
     width: 360px;
 }
 
 .tall-form-centered {
+    margin: 15px 24px 15px 24px;
+}
+
+.short-form {
+    margin: -241px 0 0 -180px;
+    height: 482px;
+    width: 360px;
+}
+
+.short-form-centered {
     margin: 15px 24px 15px 24px;
 }

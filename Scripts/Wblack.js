@@ -1,5 +1,10 @@
 ﻿$(document).ready(resetPage());
 
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+// left: 37, up: 38, right: 39, down: 40
+scrollEventKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+$window = $(window);
+$document = $(document);
 var processing = false;
 
 $(window).scroll(function () {
@@ -12,7 +17,67 @@ function nearBottomOfPage() {
     return ($(document).height() - $(window).height()) - $(window).scrollTop() <= 100;
 }
 
+$("#nonPostedTable").on("click", "td", function () {
+    disable_scrolling();
+    displayPostTransForm(parseInt($(this).parents('tr').children('td')[0].textContent));
+});
+
+function displayPostTransForm(intID) {
+    $.ajax({
+        type: 'GET',
+        url: "/Wblack/_PostTransaction",
+        data: { transID: intID },
+        dataType: 'html',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            if (data != null) {
+                $("article").append(data);
+            }
+        }
+    });
+}
+
+function postTransaction() {
+    var postData = getPostTransaction();
+    $.ajax({
+        type: 'GET',
+        url: "/Wblack/PostTransaction",
+        data: postData,
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function () {
+            removePostedData(parseInt($('#postTransID')[0].innerText));
+        },
+        error: function () {
+            alert("Couldn't find a BANK STATEMENT for that ACCOUNT on that DATE.");
+        },
+        complete: function () {
+            removePostForm();
+            enable_scrolling();
+        }
+    });
+}
+
+function getPostTransaction() {
+    return {
+        TransactionID: parseInt($('#postTransID')[0].innerText),
+        BankRecordedDate: $('#Date')[0].value,
+        BankRecordedAmt: parseFloat($('#Amount')[0].value)
+    };
+}
+
+function removePostForm() {
+    $('div#postTrans').remove();
+}
+
+function removePostedData(transID) {
+    $('notPostedTable,td').not(function() {
+        return $(this).text() != transID.toString();
+    }).parent().remove();
+}
+
 function displayNewTransForm() {
+    disable_scrolling();
     $.ajax({
         type: 'GET',
         url: "/Wblack/_NewTransaction",
@@ -45,6 +110,7 @@ function createTransaction() {
             var acc = $('#NewAccountId option:selected')[0].value;
             removeInsertForm();
             displayData(acc);
+            enable_scrolling();
         }
     });
 }
@@ -87,7 +153,7 @@ function loadNewTransaction() {
         success: function (data) {
             displayNewTransaction(data);
         },
-        complete: function() {
+        complete: function () {
             processing = false;
         }
     });
@@ -99,8 +165,8 @@ function displayNewTransaction(data) {
 
 function setFilters(acc) {
     $("#AccountId").val(acc);
-    $('input:radio[name=Transactions][value="2"]').prop('checked', true);
-    $('input:radio[name=Sort][value="1"]').prop('checked', true);
+    $('input:radio[name=Transactions][value=2]').prop('checked', true);
+    $('input:radio[name=Sort][value=1]').prop('checked', true);
 }
 
 function resetPage() {
@@ -111,9 +177,7 @@ function resetPage() {
 
 function removeNonHeaderRows() {
     $('tr').not(function () {
-        if ($(this).has('th').length) {
-            return true;
-        }
+        return $(this).has('th').length;
     }).remove();
 }
 
@@ -146,7 +210,7 @@ function showNonPostedHeaders() {
 }
 
 function loadTransactions() {
-    if ($('input:radio[name=Sort]:checked')[0].value == "0") {
+    if ($('input:radio[name=Sort]:checked')[0].value == 0) {
         loadAscending();
     } else {
         loadDescending();
@@ -294,19 +358,19 @@ function getSkip() {
 }
 
 function isAscending() {
-    return $('input:radio[name=Sort]:checked')[0].value != "0";
+    return $('input:radio[name=Sort]:checked')[0].value != 0;
 }
 
 function isPosted() {
-    return $('input:radio[name=Transactions]:checked')[0].value == "0";
+    return $('input:radio[name=Transactions]:checked')[0].value == 0;
 }
 
 function isNotPosted() {
-    return $('input:radio[name=Transactions]:checked')[0].value == "1";
+    return $('input:radio[name=Transactions]:checked')[0].value == 1;
 }
 
 function isAll() {
-    return $('input:radio[name=Transactions]:checked')[0].value == "2";
+    return $('input:radio[name=Transactions]:checked')[0].value == 2;
 }
 
 function displayAll(data) {
@@ -325,4 +389,32 @@ function displayNonPosted(data) {
     if (data != null && data != "") {
         $('#nonPostedTable tbody').append(data);
     }
+}
+
+function disable_scrolling() {
+    var t = this;
+    t.$window.on("mousewheel.UserScrollDisabler DOMMouseScroll.UserScrollDisabler", this._handleWheel);
+    t.$document.on("mousewheel.UserScrollDisabler touchmove.UserScrollDisabler", this._handleWheel);
+    t.$document.on("keydown.UserScrollDisabler", function (event) {
+        t._handleKeydown.call(t, event);
+    });
+}
+
+function enable_scrolling() {
+    var t = this;
+    t.$window.off(".UserScrollDisabler");
+    t.$document.off(".UserScrollDisabler");
+}
+
+function _handleKeydown(event) {
+    for (var i = 0; i < this.scrollEventKeys.length; i++) {
+        if (event.keyCode === this.scrollEventKeys[i]) {
+            event.preventDefault();
+            return;
+        }
+    }
+}
+
+function _handleWheel(event) {
+    event.preventDefault();
 }

@@ -46,13 +46,13 @@
     <h2>Account</h2>
     @Html.DropDownList("AccountId", (IEnumerable<SelectListItem>)ViewBag.Accounts, new { onchange = "resetPage()" })
     <div>
-        @Html.RadioButton("Transactions", "0", new { @checked = "checked", onchange = "resetPage()" })Posted
-        @Html.RadioButton("Transactions", "1", new { onchange = "resetPage()" })Not Posted
-        @Html.RadioButton("Transactions", "2", new { onchange = "resetPage()" })All
+        @Html.RadioButton("Transactions", 0, new { @checked = "checked", onchange = "resetPage()" })Posted
+        @Html.RadioButton("Transactions", 1, new { onchange = "resetPage()" })Not Posted
+        @Html.RadioButton("Transactions", 2, new { onchange = "resetPage()" })All
     </div>
     <div>
-        @Html.RadioButton("Sort", "0", new { onchange = "resetPage()" })Ascending
-        @Html.RadioButton("Sort", "1", new { @checked = "checked", onchange = "resetPage()" })Descending
+        @Html.RadioButton("Sort", 0, new { onchange = "resetPage()" })Ascending
+        @Html.RadioButton("Sort", 1, new { @checked = "checked", onchange = "resetPage()" })Descending
     </div>
     <div>
         <button onclick="displayNewTransForm(); return false;">Insert New Transaction</button>

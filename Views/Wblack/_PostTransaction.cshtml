@@ -1,0 +1,43 @@
+﻿@model Wblack.Transaction
+
+<div id="postTrans" class="fullpage">
+    <div class="flexBox short-form">
+        <div class="short-form-centered">
+            <label id="postTransID" style="display: none">@Model.TransactionID</label>
+            <div>
+                <h2>Recorded</h2>
+            </div>
+            <div>
+                <label>Date</label>
+                <div>
+                    @Html.TextBox("postDate", @Model.TransactionDate.ToString("MM/dd/yyyy"), new { disabled = "disabled" })
+                </div>
+                <label>Entity</label>
+                <div>
+                    @Html.TextBox("postEntity", @Model.Entity.Description, new { disabled = "disabled" })
+                </div>
+                <label>Amount</label>
+                <div>
+                    @Html.TextBox("postAmount", (@Model.TransactionAmt + @Model.CashBack), new { disabled = "disabled" })
+                </div>
+            </div>
+            <div>
+                <h2>Posted</h2>
+            </div>
+            <div>
+                <label>Date</label>
+                <div>
+                    @Html.TextBox("Date", @Model.TransactionDate.AddDays(1).ToString("MM/dd/yyyy"), new { onfocus="showCalendarControl(this);" })
+                </div>
+                <label>Amount</label>
+                <div>
+                    @Html.TextBox("Amount", (@Model.TransactionAmt + @Model.CashBack))
+                </div>
+            </div>
+            <div>
+                <button onclick="postTransaction(); return false;">Post Transaction</button>
+                <button onclick="removePostForm(); return false;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

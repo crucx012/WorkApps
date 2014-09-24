@@ -13,14 +13,15 @@ namespace WorkApplications.Models
             _dataContext = dataContext;
         }
 
-        public void RunStoredProcedure(string spName, object paramObject)
+        public int RunStoredProcedure(string spName, object paramObject)
         {
             using (var conn = new SqlConnection(_dataContext.Database.Connection.ConnectionString))
-            using (var cmd = new SqlCommand(spName, conn) {CommandType = CommandType.StoredProcedure})
+            using (var cmd = new SqlCommand(spName, conn) { CommandType = CommandType.StoredProcedure })
             {
                 conn.Open();
                 LoadParameters(cmd, paramObject);
                 cmd.ExecuteNonQuery();
+                return (int)cmd.Parameters["@RETURN_VALUE"].Value;
             }
         }
 
@@ -28,10 +29,9 @@ namespace WorkApplications.Models
         {
             SqlCommandBuilder.DeriveParameters(cmd);
 
-            if (cmd.Parameters.IndexOf("@RETURN_VALUE") >= 0) cmd.Parameters.RemoveAt("@RETURN_VALUE");
-
             foreach (SqlParameter p in cmd.Parameters)
-                GetParamValue(p, paramObject);
+                if (p.ParameterName != "@RETURN_VALUE")
+                    GetParamValue(p, paramObject);
         }
 
         private static void GetParamValue(SqlParameter p, object paramObject)

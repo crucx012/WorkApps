@@ -95,9 +95,14 @@ namespace WorkApplications.Models
             get { return TransactionTypes; }
         }
 
-        public void InsertTransaction(Transaction newTransaction)
+        public int InsertTransaction(Transaction newTransaction)
         {
-            _dbInteractor.RunStoredProcedure("Transaction_Insert",newTransaction);
+            return _dbInteractor.RunStoredProcedure("Transaction_Insert",newTransaction);
+        }
+
+        public int PostTransaction(Transaction transRec)
+        {
+            return _dbInteractor.RunStoredProcedure("Transaction_Post", transRec);
         }
     }
 }
