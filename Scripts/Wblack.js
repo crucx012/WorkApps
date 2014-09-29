@@ -53,7 +53,6 @@ function postTransaction() {
         },
         complete: function () {
             removePostForm();
-            enable_scrolling();
         }
     });
 }
@@ -68,6 +67,7 @@ function getPostTransaction() {
 
 function removePostForm() {
     $('div#postTrans').remove();
+    enable_scrolling();
 }
 
 function removePostedData(transID) {
@@ -110,7 +110,6 @@ function createTransaction() {
             var acc = $('#NewAccountId option:selected')[0].value;
             removeInsertForm();
             displayData(acc);
-            enable_scrolling();
         }
     });
 }
@@ -131,6 +130,7 @@ function getNewTransaction() {
 
 function removeInsertForm() {
     $('div#newTrans').remove();
+    enable_scrolling();
 }
 
 function displayData(acc) {
