@@ -7,7 +7,7 @@
     {
         transactionDate = ((DateTime) item.BankRecordedDate).ToString("MM/dd/yyyy");
     }
-    Decimal amount = item.TransactionAmt + item.CashBack;
+    Decimal amount = item.BankRecordedAmt ?? 0;
     <tr>
         <td class="number">@transactionDate</td>
         <td class="text">@item.Entity.Description</td>
@@ -16,5 +16,5 @@
         <td class="number">@amount</td>
         <td class=" number">@ViewBag.Balance</td>
     </tr>
-    ViewBag.Balance -= item.TransactionAmt + item.CashBack;
+    ViewBag.Balance -= amount;
 }

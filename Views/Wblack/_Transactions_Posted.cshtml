@@ -7,8 +7,8 @@
     {
         transactionDate = ((DateTime)item.BankRecordedDate).ToString("MM/dd/yyyy");
     }
-    Decimal amount = item.TransactionAmt + item.CashBack;
-    ViewBag.Balance += item.TransactionAmt + item.CashBack;
+    Decimal amount = item.BankRecordedAmt ?? 0;
+    ViewBag.Balance += amount;
     <tr>
         <td class="number">@transactionDate</td>
         <td class="text">@item.Entity.Description</td>

@@ -69,9 +69,9 @@ namespace WorkApplications.Controllers
             if (skip + take >= max + take)
                 return null;
 
-            ViewBag.Balance = skip == 0 ? 0 : _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderBy(t => t.TransactionID).Take(skip).Sum(t => t.TransactionAmt + t.CashBack);
+            ViewBag.Balance = skip == 0 ? 0 : _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderBy(t => t.BankRecordedDate).ThenBy(t => t.TransactionID).Take(skip).Sum(t => t.BankRecordedAmt);
 
-            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderBy(t => t.TransactionID).Skip(skip).Take(take));
+            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderBy(t => t.BankRecordedDate).ThenBy(t => t.TransactionID).Skip(skip).Take(take));
         }
 
         public ActionResult _Transactions_PostedDescending(int accountID, int skip, int take)
@@ -81,9 +81,9 @@ namespace WorkApplications.Controllers
             if (skip + take >= max + take)
                 return null;
 
-            ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.TransactionAmt + t.CashBack);
+            ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).OrderByDescending(t => t.BankRecordedDate).ThenByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.BankRecordedAmt);
 
-            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderByDescending(t => t.TransactionID).Skip(skip).Take(take));
+            return PartialView(_db.Transactions.Where(t => t.AccountID == accountID && t.BankRecorded).Include(t => t.Entity).Include(t => t.Category).OrderByDescending(t => t.BankRecordedDate).ThenByDescending(t => t.TransactionID).Skip(skip).Take(take));
         }
 
         public ActionResult _NewTransaction()
