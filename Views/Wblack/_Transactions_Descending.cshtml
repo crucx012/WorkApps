@@ -12,5 +12,12 @@
         <td class="number">@cashBack</td>
         <td class=" number">@ViewBag.Balance</td>
     </tr>
-    ViewBag.Balance -= item.TransactionAmt + item.CashBack;
+    if (item.BankRecorded)
+    {
+        ViewBag.Balance -= item.BankRecordedAmt;
+    }
+    else
+    {
+        ViewBag.Balance -= item.TransactionAmt + item.CashBack;
+    }
 }

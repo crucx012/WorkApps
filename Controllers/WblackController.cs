@@ -35,7 +35,7 @@ namespace WorkApplications.Controllers
             if (skip + take >= max + take)
                 return null;
 
-            ViewBag.Balance = skip == 0 ? 0 : _db.Transactions.Where(t => t.AccountID == accountID).OrderBy(t => t.TransactionID).Take(skip).Sum(t => t.TransactionAmt + t.CashBack);
+            ViewBag.Balance = skip == 0 ? 0 : _db.Transactions.Where(t => t.AccountID == accountID).OrderBy(t => t.TransactionID).Take(skip).Sum(t => t.BankRecordedAmt ?? t.TransactionAmt + t.CashBack);
 
             return PartialView(_db.Transactions.Where(t => t.AccountID == accountID).Include(t => t.Entity).OrderBy(t => t.TransactionID).Skip(skip).Take(take));
         }
@@ -47,7 +47,7 @@ namespace WorkApplications.Controllers
             if (skip + take >= max + take)
                 return null;
 
-            ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID).OrderByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.TransactionAmt + t.CashBack);
+            ViewBag.Balance = _db.Transactions.Where(t => t.AccountID == accountID).OrderByDescending(t => t.TransactionID).Skip(skip).Sum(t => t.BankRecordedAmt ?? t.TransactionAmt + t.CashBack);
 
             return PartialView(_db.Transactions.Where(t => t.AccountID == accountID).Include(t => t.Entity).OrderByDescending(t => t.TransactionID).Skip(skip).Take(take));
         }

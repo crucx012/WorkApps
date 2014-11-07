@@ -4,7 +4,14 @@
 {
     String transactionDate = item.TransactionDate.ToString("MM/dd/yyyy");
     Decimal? cashBack = item.CashBack == 0 ? (decimal?)null : item.CashBack;
-    ViewBag.Balance += item.TransactionAmt + item.CashBack;
+    if (item.BankRecorded)
+    {
+        ViewBag.Balance += item.BankRecordedAmt;
+    }
+    else
+    {
+        ViewBag.Balance += item.TransactionAmt + item.CashBack;
+    }
     <tr>
         <td class="number">@transactionDate</td>
         <td class="text">@item.Entity.Description</td>
