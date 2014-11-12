@@ -1,15 +1,15 @@
-﻿function positionInfo(object) {
+﻿function PositionInfo(object) {
 
-    var p_elm = object;
+    var pElm = object;
 
     this.getElementLeft = getElementLeft;
     function getElementLeft() {
         var x = 0;
         var elm;
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
+        if (typeof (pElm) == "object") {
+            elm = pElm;
         } else {
-            elm = document.getElementById(p_elm);
+            elm = document.getElementById(pElm);
         }
         while (elm != null) {
             if (elm.style.position == 'relative') {
@@ -26,27 +26,27 @@
     this.getElementWidth = getElementWidth;
     function getElementWidth() {
         var elm;
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
+        if (typeof (pElm) == "object") {
+            elm = pElm;
         } else {
-            elm = document.getElementById(p_elm);
+            elm = document.getElementById(pElm);
         }
         return parseInt(elm.offsetWidth);
     }
 
     this.getElementRight = getElementRight;
     function getElementRight() {
-        return getElementLeft(p_elm) + getElementWidth(p_elm);
+        return getElementLeft(pElm) + getElementWidth(pElm);
     }
 
     this.getElementTop = getElementTop;
     function getElementTop() {
         var y = 0;
         var elm;
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
+        if (typeof (pElm) == "object") {
+            elm = pElm;
         } else {
-            elm = document.getElementById(p_elm);
+            elm = document.getElementById(pElm);
         }
         while (elm != null) {
             if (elm.style.position == 'relative') {
@@ -63,17 +63,17 @@
     this.getElementHeight = getElementHeight;
     function getElementHeight() {
         var elm;
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
+        if (typeof (pElm) == "object") {
+            elm = pElm;
         } else {
-            elm = document.getElementById(p_elm);
+            elm = document.getElementById(pElm);
         }
         return parseInt(elm.offsetHeight);
     }
 
     this.getElementBottom = getElementBottom;
     function getElementBottom() {
-        return getElementTop(p_elm) + getElementHeight(p_elm);
+        return getElementTop(pElm) + getElementHeight(pElm);
     }
 }
 
@@ -82,7 +82,7 @@ function CalendarControl() {
     var calendarId = 'CalendarControl';
     var currentYear = 0;
     var currentMonth = 0;
-    var currentDay = 0;
+    var currentDay;
 
     var selectedYear = 0;
     var selectedMonth = 0;
@@ -91,46 +91,23 @@ function CalendarControl() {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var dateField = null;
 
-    function getProperty(p_property) {
-        var p_elm = calendarId;
-        var elm = null;
+    function setElementProperty(pProperty, pValue, pElmId) {
+        var pElm = pElmId;
+        var elm;
 
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
+        if (typeof (pElm) == "object") {
+            elm = pElm;
         } else {
-            elm = document.getElementById(p_elm);
-        }
-        if (elm != null) {
-            if (elm.style) {
-                elm = elm.style;
-                if (elm[p_property]) {
-                    return elm[p_property];
-                } else {
-                    return null;
-                }
-            } else {
-                return null;
-            }
-        }
-    }
-
-    function setElementProperty(p_property, p_value, p_elmId) {
-        var p_elm = p_elmId;
-        var elm = null;
-
-        if (typeof (p_elm) == "object") {
-            elm = p_elm;
-        } else {
-            elm = document.getElementById(p_elm);
+            elm = document.getElementById(pElm);
         }
         if ((elm != null) && (elm.style != null)) {
             elm = elm.style;
-            elm[p_property] = p_value;
+            elm[pProperty] = pValue;
         }
     }
 
-    function setProperty(p_property, p_value) {
-        setElementProperty(p_property, p_value, calendarId);
+    function setProperty(pProperty, pValue) {
+        setElementProperty(pProperty, pValue, calendarId);
     }
 
     function getDaysInMonth(year, month) {
@@ -138,7 +115,7 @@ function CalendarControl() {
     }
 
     function getDayOfWeek(year, month, day) {
-        var date = new Date(year, month - 1, day)
+        var date = new Date(year, month - 1, day);
         return date.getDay();
     }
 
@@ -173,7 +150,7 @@ function CalendarControl() {
             currentYear--;
         }
 
-        calendar = document.getElementById(calendarId);
+        var calendar = document.getElementById(calendarId);
         calendar.innerHTML = calendarDrawTable();
     }
 
@@ -181,7 +158,7 @@ function CalendarControl() {
     function changeYear(change) {
         currentYear += change;
         currentDay = 0;
-        calendar = document.getElementById(calendarId);
+        var calendar = document.getElementById(calendarId);
         calendar.innerHTML = calendarDrawTable();
     }
 
@@ -205,13 +182,13 @@ function CalendarControl() {
         var validDay = 0;
         var startDayOfWeek = getDayOfWeek(currentYear, currentMonth, dayOfMonth);
         var daysInMonth = getDaysInMonth(currentYear, currentMonth);
-        var css_class = null; //CSS class for each day
+        var cssClass; //CSS class for each day
 
         var table = "<table cellspacing='0' cellpadding='0' border='0'>";
         table = table + "<tr class='header'>";
-        table = table + "  <td colspan='2' class='previous'><a href='javascript:changeCalendarControlMonth(-1);'>&lt;</a> <a href='javascript:changeCalendarControlYear(-1);'>&laquo;</a></td>";
+        table = table + "  <td colspan='2' class='previous'><a href='javascript:changeCalendarControlMonth(-1);'>&laquo;</a></td>";
         table = table + "  <td colspan='3' class='title'>" + months[currentMonth - 1] + "<br>" + currentYear + "</td>";
-        table = table + "  <td colspan='2' class='next'><a href='javascript:changeCalendarControlYear(1);'>&raquo;</a> <a href='javascript:changeCalendarControlMonth(1);'>&gt;</a></td>";
+        table = table + "  <td colspan='2' class='next'><a href='javascript:changeCalendarControlMonth(1);'>&raquo;</a></td>";
         table = table + "</tr>";
         table = table + "<tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>";
 
@@ -226,14 +203,14 @@ function CalendarControl() {
 
                 if (validDay) {
                     if (dayOfMonth == selectedDay && currentYear == selectedYear && currentMonth == selectedMonth) {
-                        css_class = 'current';
+                        cssClass = 'current';
                     } else if (dayOfWeek == 0 || dayOfWeek == 6) {
-                        css_class = 'weekend';
+                        cssClass = 'weekend';
                     } else {
-                        css_class = 'weekday';
+                        cssClass = 'weekday';
                     }
 
-                    table = table + "<td><a class='" + css_class + "' href=\"javascript:setCalendarControlDate(" + currentYear + "," + currentMonth + "," + dayOfMonth + ")\">" + dayOfMonth + "</a></td>";
+                    table = table + "<td><a class='" + cssClass + "' href=\"javascript:setCalendarControlDate(" + currentYear + "," + currentMonth + "," + dayOfMonth + ")\">" + dayOfMonth + "</a></td>";
                     dayOfMonth++;
                 } else {
                     table = table + "<td class='empty'>&nbsp;</td>";
@@ -242,7 +219,7 @@ function CalendarControl() {
             table = table + "</tr>";
         }
 
-        table = table + "<tr class='header'><th colspan='7' style='padding: 3px;'><a href='javascript:clearCalendarControl();'>Clear</a> | <a href='javascript:hideCalendarControl();'>Close</a></td></tr>";
+        table = table + "<tr class='header'><th colspan='7' style='padding: 3px;'><a href='javascript:clearCalendarControl();'>Clear</a><a href='javascript:hideCalendarControl();'>Close</a></td></tr>";
         table = table + "</table>";
 
         return table;
@@ -250,7 +227,7 @@ function CalendarControl() {
 
     this.show = show;
     function show(field) {
-        can_hide = 0;
+        canHide = 0;
 
         // If the calendar is visible and associated with
         // this field do not do anything.
@@ -283,27 +260,19 @@ function CalendarControl() {
 
         if (document.getElementById) {
 
-            calendar = document.getElementById(calendarId);
+            var calendar = document.getElementById(calendarId);
             calendar.innerHTML = calendarDrawTable(currentYear, currentMonth);
 
             setProperty('display', 'block');
 
-            var fieldPos = new positionInfo(dateField);
-            var calendarPos = new positionInfo(calendarId);
+            var fieldPos = new PositionInfo(dateField);
+            var calendarPos = new PositionInfo(calendarId);
 
             var x = fieldPos.getElementLeft();
             var y = fieldPos.getElementBottom();
 
             setProperty('left', x + "px");
             setProperty('top', y + "px");
-
-            if (document.all) {
-                setElementProperty('display', 'block', 'CalendarControlIFrame');
-                setElementProperty('left', x + "px", 'CalendarControlIFrame');
-                setElementProperty('top', y + "px", 'CalendarControlIFrame');
-                setElementProperty('width', calendarPos.getElementWidth() + "px", 'CalendarControlIFrame');
-                setElementProperty('height', calendarPos.getElementHeight() + "px", 'CalendarControlIFrame');
-            }
         }
     }
 
@@ -318,11 +287,11 @@ function CalendarControl() {
 
     this.visible = visible;
     function visible() {
-        return dateField
+        return dateField;
     }
 
-    this.can_hide = can_hide;
-    var can_hide = 0;
+    this.can_hide = canHide;
+    var canHide;
 }
 
 var calendarControl = new CalendarControl();
