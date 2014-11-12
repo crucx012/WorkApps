@@ -13,18 +13,17 @@
 </hgroup>
 
 <article>
-    <div id="bible-selection">
-        @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations, new { onchange = "translationChange" })
-        @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
-        @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters, new { onchange = "selectChapter" })
-    </div>
-    <br />
     <div id="TopPaging"></div>
     <div id="Content"></div>
     <div id="BottomPaging"></div>
 </article>
 
 <aside>
+    <div id="bible-selection">
+        @Html.DropDownList("TranslationId", (IEnumerable<SelectListItem>)ViewBag.Translations, new { onchange = "translationChange" })
+        @Html.DropDownList("BookId", (IEnumerable<SelectListItem>)ViewBag.Books, new { onchange = "bookChange" })
+        @Html.DropDownList("ChapterId", (IEnumerable<SelectListItem>)ViewBag.Chapters, new { onchange = "selectChapter" })
+    </div>
     <h2>Search</h2>
     <input id="Search" type="text" onkeyup="setPage(1,1000)" />
     <label>Results per page</label><input id="nudPerPage" type="number" value="20" min="10" max="50" step="10" onchange="setPage(1,0)" />
