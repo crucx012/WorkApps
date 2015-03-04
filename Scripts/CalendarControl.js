@@ -12,7 +12,7 @@
             elm = document.getElementById(pElm);
         }
         while (elm != null) {
-            if (elm.style.position == 'relative') {
+            if (elm.style.position === 'relative') {
                 break;
             }
             else {
@@ -272,7 +272,7 @@ function CalendarControl() {
             var y = fieldPos.getElementBottom();
 
             setProperty('left', x + "px");
-            setProperty('top', y + "px");
+            setProperty('top', y + $(document).scrollTop() + "px");
         }
     }
 
